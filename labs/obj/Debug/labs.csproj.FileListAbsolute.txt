@@ -1,0 +1,7 @@
+C:\Users\Dima\Documents\GitHub\labs\labs\bin\Debug\labs.exe.config
+C:\Users\Dima\Documents\GitHub\labs\labs\bin\Debug\labs.exe
+C:\Users\Dima\Documents\GitHub\labs\labs\bin\Debug\labs.pdb
+C:\Users\Dima\Documents\GitHub\labs\labs\obj\Debug\labs.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Documents\GitHub\labs\labs\obj\Debug\labs.csproj.CoreCompileInputs.cache
+C:\Users\Dima\Documents\GitHub\labs\labs\obj\Debug\labs.exe
+C:\Users\Dima\Documents\GitHub\labs\labs\obj\Debug\labs.pdb
