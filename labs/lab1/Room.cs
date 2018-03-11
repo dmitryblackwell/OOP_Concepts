@@ -56,5 +56,9 @@ namespace labs.lab1
         public int RoomNum {
             get { return this.roomNum;  }
         }
+        public int StudentsCount
+        {
+            get { return this.studentCount; }
+        }
     }
 }

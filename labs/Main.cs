@@ -11,7 +11,6 @@ namespace labs
     class main {
         static void Main(string[] args){
             Dormitory dormitory = new Dormitory();
-
             //Console.ReadKey();
         }
     }

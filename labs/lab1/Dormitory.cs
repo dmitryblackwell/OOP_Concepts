@@ -8,7 +8,9 @@ namespace labs.lab1
 {
     class Dormitory
     {
-        Room[] rooms = new Room[9] {new Room(1, 1, 4, new String[] { "Franz Kafka", "Lev Tolstoi", "Mikhail Lermontov", "Vera Nabokov"}),
+
+        private const int TOTAL_ROOMS = 9;
+        Room[] rooms = new Room[TOTAL_ROOMS] {new Room(1, 1, 4, new String[] { "Franz Kafka", "Lev Tolstoi", "Mikhail Lermontov", "Vera Nabokov"}),
                                     new Room(2, 1, 1, new String[] {"Vladimir Nabokov"}),
                                     new Room(3, 1, 2, new String[] {"Richard Dawkins", "Stephen Hawking"}),
 
@@ -36,8 +38,43 @@ namespace labs.lab1
                     else
                         findStudent(cmd[1]);
                 }
-                if (cmd[0].Equals("exit"))
-                    isExit = true;                    
+                else if (cmd[0].Equals("free"))
+                    printFreeRooms();
+                else if (cmd[0].Equals("all"))
+                    printAllRooms();
+                else if (cmd[0].Equals("exit"))
+                    isExit = true;
+                else
+                    Console.WriteLine("not a command");
+            }
+        }
+        private Room[] getSortedRooms(Room[] rooms)
+        {
+            Room temp;
+            for(int i=0; i<rooms.Length; ++i)
+            {
+                for(int j=i+1; j< rooms.Length; ++j)
+                {
+                    if (rooms[i].StudentsCount > rooms[j].StudentsCount)
+                    {
+                        temp = rooms[i];
+                        rooms[i] = rooms[j];
+                        rooms[j] = temp;
+                    }
+                }
+            }
+            return rooms;
+        }
+        private void printFreeRooms()
+        {
+            Room[] sortedRooms = getSortedRooms(rooms);
+            for(int i=0;i<TOTAL_ROOMS; ++i)
+            {
+                if(sortedRooms[i].StudentsCount != Room.MAX_STUDENTS_IN_ROOM)
+                {
+                    Console.WriteLine("Room " + sortedRooms[i].RoomNum + ": "
+                        + (Room.MAX_STUDENTS_IN_ROOM - sortedRooms[i].StudentsCount) + "free beds");
+                }
             }
         }
         private void findStudent(String name)
