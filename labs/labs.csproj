@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="lab1\Dormitory.cs" />
+    <Compile Include="lab1\FindFreeRoom.cs" />
+    <Compile Include="lab1\FindStudentByName.cs" />
+    <Compile Include="lab1\GetRoomOccupancy.cs" />
     <Compile Include="lab1\Room.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
