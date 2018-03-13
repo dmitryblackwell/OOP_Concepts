@@ -19,5 +19,6 @@ namespace labs.lab2
 
         public Node(int v) : this(v, null) { }
         public Node(): this(0, null) { }
+        public Node(Node n) : this(n.value, n.next) { } 
     }
 }
