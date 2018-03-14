@@ -29,6 +29,22 @@ echo Deliting all elements with this special value:
 list --deleteAll 0
 list -p
 # 
+echo
+echo Adding new signed elements:
+list --addBefore 6 -4
+list --addBefore 2 -6
+list --toStart -10 -3
+list --toEnd -2 3
+list -p
+echo
+echo Average of signed elements:
+list --signedAverage
+#
+echo
+echo Print odd elements:
+list --printOdd
+#
 echo 
 echo done
+echo
 quit

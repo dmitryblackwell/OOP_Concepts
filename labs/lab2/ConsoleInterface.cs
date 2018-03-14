@@ -80,6 +80,12 @@ namespace labs.lab2
                 case "--deleteAll":
                     list.deleteAll(Int32.Parse(cmd[2]));
                     break;
+                case "--signedAverage":
+                    list.signedAverage();
+                    break;
+                case "--printOdd":
+                    list.printOdd();
+                    break;
                 default:
                     notCmd(cmd[1]);
                     break;
