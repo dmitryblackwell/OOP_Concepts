@@ -21,7 +21,8 @@ namespace labs.lab2
                 Console.Write("cmd: ");
                 String cmdLine = Console.ReadLine();
                 cmdLine += " ";
-                performCmd(cmdLine);
+                String[] cmd = cmdLine.Split(new char[0]);
+                performCmd(cmd);
             }
         }
 
@@ -74,9 +75,8 @@ namespace labs.lab2
                     break;
             }
         }
-        private void performCmd(String cmdLine)
+        private void performCmd(String[] cmd)
         {
-            String[] cmd = cmdLine.Split(new char[0]);
             switch (cmd[0])
             {
                 case "#":
@@ -98,8 +98,14 @@ namespace labs.lab2
                         Console.Write(cmd[i] + " ");
                     Console.WriteLine("");
                     break;
+                case "clear":
+                    // clear console
+                    break;
                 default:
-                    notCmd(cmd[0]);
+                    if (isMacros(cmd[0]))
+                        runFile(cmd[0] + ".txt");
+                    else
+                        notCmd(cmd[0]);
                     break;
             }
         }

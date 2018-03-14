@@ -13,6 +13,10 @@ namespace labs
         static void Main(string[] args){
             //Dormitory dormitory = new Dormitory();
             ConsoleInterface ci = new ConsoleInterface();
+            Dictionary<String, int> map = new Dictionary<String, int>() ;
+            map.Add("kh", 3);
+            map.Add("kv", 5);
+            map.Add("lv", 9);
             //Console.ReadKey();
         }
     }

@@ -21,6 +21,8 @@ namespace labs.lab2
             writer.Write(cmdLines);
             writer.Close();
             Console.WriteLine("File " + name + " created and writed.");
+            writer.Close();
+            file.Close();
         }
         private void deleteFile(String name)
         {
@@ -36,13 +38,23 @@ namespace labs.lab2
         {
             FileStream file = new FileStream(name, FileMode.Open);
             StreamReader reader = new StreamReader(file);
-            String cmd = reader.ReadLine();
+            String cmdLine = reader.ReadLine();
             do
             {
+                cmdLine += " ";
+                String[] cmd = cmdLine.Split(new char[0]);
                 performCmd(cmd);
-                cmd = reader.ReadLine();
+                cmdLine = reader.ReadLine();
             }
-            while(!cmd.Equals("quit"));
+            while(!cmdLine.Equals("quit"));
+            reader.Close();
+            file.Close();
+        }
+        
+        private bool isMacros(String name)
+        {
+            name += ".txt";
+            return File.Exists(name);
         }
     }
 }

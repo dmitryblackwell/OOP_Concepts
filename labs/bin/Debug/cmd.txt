@@ -1,0 +1,12 @@
+# My commands to create and print RList
+list --create 5 6 7
+echo List created
+list --print
+list --toEnd 0 8 9
+echo toEnd to List
+list -p
+list --toStart 1 2 3 0
+echo List added toStart
+list --print
+echo done
+quit

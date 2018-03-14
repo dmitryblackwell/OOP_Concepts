@@ -50,8 +50,7 @@ namespace labs.lab2
         {
             n.value = ValuePack[index];
             index++;
-
-            if (index < ValuePack.Length - 1)
+            if (index < ValuePack.Length - 2)
             {
                 n.next = new Node();
                 addRecursion(n.next, ValuePack, index);
