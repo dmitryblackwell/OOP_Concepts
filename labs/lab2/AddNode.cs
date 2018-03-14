@@ -4,19 +4,18 @@ namespace labs.lab2
 {
     public partial class RList
     {
-
-        public void create(int[] ValuePack)    
+        public void create(int[] ValuePack)  // create list and 
         {
             isNodeDefined = true;
             addRecursion(root, ValuePack, 0);
         }
 
-        public void toEnd(int[] ValuePack)
+        public void toEnd(int[] ValuePack) // add elements to the end
         {
             toEndRecursion(root, ValuePack);
         }
 
-        public void toStart(int[] ValuePack)
+        public void toStart(int[] ValuePack) // add elemnts to the start
         {
             Node RootTmp = root;
             root = new Node();
@@ -24,8 +23,20 @@ namespace labs.lab2
             plusList(root, RootTmp);
         }
 
+        public void addBefore(int[] args) // add one element before another
+        {
+            addBefore(root, args[1], args[0]);
+        }
+         
 
 
+        private void addBefore(Node n, int before, int value)
+        {
+            if (n.next != null && n.next.value == before)
+                n.next = new Node(value, n.next);
+            else if (n.next != null)
+                addBefore(n.next, value, before);
+        }
 
         private void plusList(Node n, Node list)
         {
@@ -37,7 +48,6 @@ namespace labs.lab2
 
         private void toEndRecursion(Node n,int[] ValuePack)
         {
-            
             if (n.next != null)
                 toEndRecursion(n.next, ValuePack);
             else 
@@ -46,6 +56,7 @@ namespace labs.lab2
                 addRecursion(n.next, ValuePack, 0);
             }
         }
+
         private void addRecursion(Node n, int[] ValuePack, int index)
         {
             n.value = ValuePack[index];

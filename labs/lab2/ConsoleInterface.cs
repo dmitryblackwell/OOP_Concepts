@@ -6,7 +6,7 @@ namespace labs.lab2
     {
         private RList list;
         private bool isExit;
-
+        private const String SCRIPT_FOLDER = "scripts/";
         public ConsoleInterface()
         {
             list = new RList();
@@ -14,7 +14,7 @@ namespace labs.lab2
             runConsole();
         }
 
-        private void runConsole()
+        private void runConsole()  // run this console and read commands
         {
             while (!isExit)
             {
@@ -26,7 +26,7 @@ namespace labs.lab2
             }
         }
 
-        private void fileCmd(String[] cmd)
+        private void fileCmd(String[] cmd)  // all cmds for file
         {
             switch (cmd[1])
             {
@@ -46,7 +46,7 @@ namespace labs.lab2
                     break;
             }
         }
-        private void listCmd(String[] cmd)
+        private void listCmd(String[] cmd) // all cmds for list
         {
             switch (cmd[1])
             {
@@ -70,12 +70,22 @@ namespace labs.lab2
                 case "--print":
                     list.print();
                     break;
+                case "-b":
+                case "--addBefore":
+                    list.addBefore(getArgs(cmd));
+                    break;
+                case "--deleteOne":
+                    list.deleteOne(Int32.Parse(cmd[2]));
+                    break;
+                case "--deleteAll":
+                    list.deleteAll(Int32.Parse(cmd[2]));
+                    break;
                 default:
                     notCmd(cmd[1]);
                     break;
             }
         }
-        private void performCmd(String[] cmd)
+        private void performCmd(String[] cmd) //general cmds
         {
             switch (cmd[0])
             {

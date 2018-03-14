@@ -16,12 +16,11 @@ namespace labs.lab2
         
         public void print()
         {
-            Console.WriteLine("Recursion list: ");
             if(isNodeDefined)
                 printRecursion(root);
             else
                 Console.Write("null");
-            Console.WriteLine("");
+            Console.Write("\n");
         }
 
 
@@ -29,7 +28,7 @@ namespace labs.lab2
         {
             if (n == null)
                 return;
-            Console.Write(n.value + " -> ");
+            Console.Write(n.value + ( (n.next == null) ? "" : " -> " ) );
             printRecursion(n.next);
         }
     }

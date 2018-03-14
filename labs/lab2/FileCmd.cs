@@ -7,7 +7,8 @@ namespace labs.lab2
     {
         private void createFile(String name)
         {
-            FileStream file = new FileStream(name, FileMode.Create);
+            System.IO.Directory.CreateDirectory(SCRIPT_FOLDER);
+            FileStream file = new FileStream(SCRIPT_FOLDER + name, FileMode.Create);
             StreamWriter writer = new StreamWriter(file);
             Console.WriteLine("Enter all your cmds here. After you done enter: quit");
             String cmdLines = "";
@@ -30,13 +31,13 @@ namespace labs.lab2
             String answer = Console.ReadLine();
             if (answer.Equals("y") || answer.Equals("Y"))
             {
-                File.Delete(name);
+                File.Delete(SCRIPT_FOLDER + name);
                 Console.WriteLine("File deleted.");
             }
         }
         private void runFile(String name)
         {
-            FileStream file = new FileStream(name, FileMode.Open);
+            FileStream file = new FileStream(SCRIPT_FOLDER + name, FileMode.Open);
             StreamReader reader = new StreamReader(file);
             String cmdLine = reader.ReadLine();
             do
@@ -54,7 +55,7 @@ namespace labs.lab2
         private bool isMacros(String name)
         {
             name += ".txt";
-            return File.Exists(name);
+            return File.Exists(SCRIPT_FOLDER + name);
         }
     }
 }

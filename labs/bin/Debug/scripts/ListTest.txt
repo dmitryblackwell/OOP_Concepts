@@ -1,0 +1,34 @@
+# this script test Rlits by adding and deleting elements
+echo 
+echo Creating RList:
+list --create 5 6 7
+list -p
+# 
+echo 
+echo Adding elements to the end:
+list --toEnd 0 0 9
+list -p
+# 
+echo 
+echo Adding elements to the start:
+list --toStart 1 2 0
+list -p
+# 
+echo 
+echo Adding element before another elemnt:
+list --addBefore 6 0
+list -p
+#
+echo
+echo Deliting one element:
+list --deleteOne 0
+list -p
+#
+echo
+echo Deliting all elements with this special value:
+list --deleteAll 0
+list -p
+# 
+echo 
+echo done
+quit
