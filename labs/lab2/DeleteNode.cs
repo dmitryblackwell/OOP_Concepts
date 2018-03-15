@@ -20,9 +20,24 @@ namespace labs.lab2
         {
             deleteElement(root, value, false);
         }
+        public void deleteEven()
+        {
+            deleteEven(root);
+        }
 
 
-
+        private void deleteEven(Node n)
+        {
+            if (n.next == null)
+                return;
+            else if (n.next.next == null)
+                n.next = null;
+            else
+            {
+                n.next = new Node(n.next.next);
+                deleteEven(n.next);
+            }
+        }
         private void deleteElement(Node n,int value, bool isOne)
         {
             if (n.next == null)

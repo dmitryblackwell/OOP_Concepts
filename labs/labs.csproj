@@ -50,6 +50,7 @@
     <Compile Include="lab2\AddNode.cs" />
     <Compile Include="lab2\ConsoleInterface.cs" />
     <Compile Include="lab2\DeleteNode.cs" />
+    <Compile Include="lab2\ElementNotFoundException.cs" />
     <Compile Include="lab2\FileCmd.cs" />
     <Compile Include="lab2\Node.cs" />
     <Compile Include="lab2\RList.cs" />
