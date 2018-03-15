@@ -42,19 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpStrings.cs" />
     <Compile Include="lab1\Dormitory.cs" />
     <Compile Include="lab1\FindFreeRoom.cs" />
     <Compile Include="lab1\FindStudentByName.cs" />
     <Compile Include="lab1\GetRoomOccupancy.cs" />
     <Compile Include="lab1\Room.cs" />
     <Compile Include="lab2\AddNode.cs" />
-    <Compile Include="lab2\ConsoleInterface.cs" />
+    <Compile Include="ConsoleInterface.cs" />
     <Compile Include="lab2\DeleteNode.cs" />
     <Compile Include="lab2\ElementNotFoundException.cs" />
-    <Compile Include="lab2\FileCmd.cs" />
+    <Compile Include="FileCmd.cs" />
     <Compile Include="lab2\Node.cs" />
     <Compile Include="lab2\RList.cs" />
-    <Compile Include="main.cs" />
+    <Compile Include="InputPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

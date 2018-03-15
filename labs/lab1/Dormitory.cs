@@ -22,42 +22,9 @@ namespace labs.lab1
                                     new Room(7, 3, 2, new String[] {"Leil Lowndes", "Charles Bukowski"}),
                                     new Room(8, 3, 3, new String[] {"Joanne Rowling", "Charles Dickens", "Charles Darwin"}),
                                     new Room(9, 3, 4, new String[] {"Ayn Rand", "Jerome Salinger", "Herbert Schildt", "Bruce Eckel"})};        
-        public Dormitory()
-        {
-            bool isExit = false;
-            while (!isExit)
-            {
-                Console.Write("cmd: ");
-                String cmdLine = Console.ReadLine();
-                String[] cmd = cmdLine.Split(new char[0]);
-                if (cmd[0].Equals("find"))
-                {
-                    if (cmd.Length == 3)
-                        findStudent(cmd[1] + " " + cmd[2]);
-                    else
-                        findStudent(cmd[1]);
-                }
-                else if (cmd[0].Equals("free"))
-                    printFreeRooms();
-                else if (cmd[0].Equals("occupancy"))
-                    GetRoomOccupancy();
-                else if (cmd[0].Equals("all"))
-                    printAllRooms();
-                else if (cmd[0].Equals("exit"))
-                    isExit = true;
-                else if (cmd[0].Equals("help"))
-                    Console.Write("To find room print: find %RoomNumber% \n" +
-                        "To print all free rooms: free \n" +
-                        "To print occupancy on floor: occupancy\n" +
-                        "To print all rooms: all\n" +  
-                        "To get help: help\n" +
-                        "To exit: exit");
-                else
-                    Console.WriteLine("not a command");
-            }
-        }
+    
 
-        private void printAllRooms()
+        public void printAllRooms()
         {
             foreach (Room r in rooms)
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace labs.lab2
+namespace labs
 {
     partial class ConsoleInterface
     {

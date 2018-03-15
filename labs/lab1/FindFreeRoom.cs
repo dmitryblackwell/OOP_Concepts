@@ -22,7 +22,7 @@ namespace labs.lab1
             return rooms;
         }
 
-        private void printFreeRooms() // print all rooms with one free room or more
+        public void printFreeRooms() // print all rooms with one free room or more
         {
             Room[] sortedRooms = getSortedRooms(rooms);
             for (int i = 0; i < TOTAL_ROOMS; ++i)

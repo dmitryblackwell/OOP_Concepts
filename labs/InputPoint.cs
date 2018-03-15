@@ -4,10 +4,10 @@ using labs.lab2;
 
 namespace labs
 {
-    class main {
+    class InputPoint {
         static void Main(string[] args){
-            //Dormitory dormitory = new Dormitory();
             ConsoleInterface ci = new ConsoleInterface();
+            ci.runConsole();
             //Console.ReadKey();
         }
     }

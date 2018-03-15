@@ -1,20 +1,23 @@
-﻿using System;
+﻿using labs.lab1;
+using labs.lab2;
+using System;
 
-namespace labs.lab2
-{
+namespace labs
+{ 
     partial class ConsoleInterface
     {
         private RList list;
+        private Dormitory dorm;
         private bool isExit;
         private const String SCRIPT_FOLDER = "scripts/";
         public ConsoleInterface()
         {
             list = new RList();
+            dorm = new Dormitory();
             isExit = false;
-            runConsole();
         }
 
-        private void runConsole()  // run this console and read commands
+        public void runConsole()  // run this console and read commands
         {
             while (!isExit)
             {
@@ -40,6 +43,10 @@ namespace labs.lab2
                 case "-r":
                 case "--run":
                     runFile(cmd[2]);
+                    break;
+                case "-h":
+                case "--help":
+                    Console.Write(FILE_HELP);
                     break;
                 default:
                     notCmd(cmd[1]);
@@ -94,13 +101,51 @@ namespace labs.lab2
                     break;
                 case "--set":
                         list.set(getArgs(cmd));
-                    
+                    break;
+                case "-?":
+                case "-h":
+                case "--help":
+                    Console.Write(LIST_HELP);
                     break;
                 default:
                     notCmd(cmd[1]);
                     break;
             }
         }
+        private void dormCmd(String[] cmd)
+        {
+            switch (cmd[1])
+            {
+                case "-f":
+                case "--find":
+                    if (cmd.Length == 4)
+                        dorm.findStudent(cmd[2] + cmd[3]);
+                    else
+                        dorm.findStudent(cmd[2]);
+                    break;
+                case "--free":
+                    dorm.printFreeRooms();
+                    break;
+                case "-o":
+                case "--occupancy":
+                    dorm.GetRoomOccupancy();
+                    break;
+                case "-p":
+                case "--print":
+                case "-a":
+                case "--all":
+                    dorm.printAllRooms();
+                    break;
+                case "-h":
+                case "--help":
+                    Console.Write(DORM_HELP);
+                    break;
+                default:
+                    notCmd(cmd[1]);
+                    break;
+            }
+        }
+
         private void performCmd(String[] cmd) //general cmds
         {
             switch (cmd[0])
@@ -114,7 +159,7 @@ namespace labs.lab2
                     listCmd(cmd);
                     break;
                 case "help":
-                    Console.WriteLine("Go Fuck yourself!");
+                    Console.Write(GENERAL_HELP);
                     break;
                 case "exit":
                     isExit = true;
@@ -125,7 +170,10 @@ namespace labs.lab2
                     Console.WriteLine("");
                     break;
                 case "clear":
-                    // clear console
+                    Console.Clear();
+                    break;
+                case "dorm":
+                    dormCmd(cmd);
                     break;
                 default:
                     if (isMacros(cmd[0]))

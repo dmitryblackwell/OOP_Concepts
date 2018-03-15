@@ -9,7 +9,7 @@ namespace labs.lab1
             public float StudentsOnFloor;
             public float TotalStudentsPossible;
         }
-        private void GetRoomOccupancy()
+        public void GetRoomOccupancy()
         {
             Floor[] floors = new Floor[TOTAL_FLOORS];
             foreach (Room r in rooms)

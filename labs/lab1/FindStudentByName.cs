@@ -4,7 +4,7 @@ namespace labs.lab1
 {
     public partial class Dormitory
     {
-        private void findStudent(String name)   // print all rooms, where lives students with name or surname this args
+        public void findStudent(String name)   // print all rooms, where lives students with name or surname this args
         {
             bool wasStudentFind = false;
             foreach (Room r in rooms)
