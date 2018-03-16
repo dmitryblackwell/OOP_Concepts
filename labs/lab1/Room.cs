@@ -14,7 +14,8 @@ namespace labs.lab1
         private String[] students;
         public const int MAX_STUDENTS_IN_ROOM = 5;
 
-        public Room(int roomNum, int floorNum,int studentCount,String[] students)
+        public Room(Room r):this(r.RoomNum, r.FloorNum, r.StudentsCount, r.students) {/*  \_(^_^)_/  */}
+        public Room(int roomNum, int floorNum, int studentCount, String[] students)
         {
             this.roomNum = roomNum;
             this.floorNum = floorNum;
@@ -28,7 +29,7 @@ namespace labs.lab1
                     this.students[i] = students[i];
             }
         }
-
+        
         public void print()
         {
             Console.Write("Room number: " + roomNum +
@@ -37,6 +38,7 @@ namespace labs.lab1
                 "\nStudents: ");
             for(int i=0; i<studentCount; ++i)
                 Console.Write(students[i] + (( (studentCount-1) == i)  ?  "\n":", "));
+            Console.Write("\n" +(StudentsCount == 0 ? "\n" : ""));
         }
 
         public bool isThereStudent(String name)

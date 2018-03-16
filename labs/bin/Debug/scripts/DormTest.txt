@@ -1,0 +1,29 @@
+# this code test dormitory program
+echo
+echo This code test methodes in Dormitory.
+#
+echo 
+echo Franz Kafka lives in:
+dorm --find Franz Kafka
+# 
+echo
+echo Nabokov lives in:
+dorm --find Nabokov
+#
+echo 
+echo Free rooms:
+dorm --free
+#
+echo 
+echo Dorm occupancy:
+dorm -o
+#
+echo
+echo
+echo Print all rooms: 
+echo
+dorm --all
+echo
+#
+echo
+quit

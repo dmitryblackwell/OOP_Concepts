@@ -44,6 +44,7 @@ echo
 echo Print odd elements:
 list --printOdd
 #
+echo 
 echo
 echo Adding some elements:
 list -e 3 4 5 6
@@ -52,6 +53,15 @@ list -p
 echo
 echo Delete even elements:
 list --deleteEven
+list -p
+#
+echo
+echo Get element number 2:
+list --get 2
+#
+echo 
+echo Set element number to 2:
+list --set 2 123
 list -p
 #
 echo 

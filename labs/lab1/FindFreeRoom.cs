@@ -4,8 +4,13 @@ namespace labs.lab1
 {
     public partial class Dormitory
     {
-        private Room[] getSortedRooms(Room[] rooms)   //sorted all rooms by students in them.
+        private Room[] getSortedRooms(Room[] r)   //sorted all rooms by students in them.
         {
+            Room[] rooms = new Room[TOTAL_ROOMS];
+            for (int i = 0; i < TOTAL_ROOMS; ++i)
+            {
+                rooms[i] = new Room(r[i]);
+            }
             Room temp;
             for (int i = 0; i < rooms.Length; ++i)
             {

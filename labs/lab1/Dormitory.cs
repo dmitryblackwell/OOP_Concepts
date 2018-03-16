@@ -29,7 +29,6 @@ namespace labs.lab1
             foreach (Room r in rooms)
             {
                 r.print();
-                Console.WriteLine("");
             }
         }
 
