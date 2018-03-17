@@ -1,0 +1,6 @@
+D:\Projects\GitHub\OOP_Concepts\bin\Debug\OOP_Concepts.exe
+D:\Projects\GitHub\OOP_Concepts\bin\Debug\OOP_Concepts.pdb
+D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csprojResolveAssemblyReference.cache
+D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CoreCompileInputs.cache
+D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.exe
+D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb

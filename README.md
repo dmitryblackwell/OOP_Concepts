@@ -1,4 +1,6 @@
-## Lab 1
+# OOP_Concepts
+
+## Dorm
 
 ### Task
 
@@ -35,7 +37,7 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
      - `public Room (int roomNum, int floorNum, int studentCount, String[] students);`
      - `public bool isThereStudent (String name);`
      - `public void print ();`
-## Lab 2
+## RecursiveList
 ### Task
 Create class, that realized one-way linked recursive list. Example:
 ```aidl
@@ -163,7 +165,7 @@ exit  - exit from console
 ```
 
 
-## Final project
+## Mined-Out
 
 **Coming soon...**
 <br>
