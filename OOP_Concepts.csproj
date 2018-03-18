@@ -49,6 +49,9 @@
     <Compile Include="FileCmd.cs" />
     <Compile Include="HelpStrings.cs" />
     <Compile Include="InputPoint.cs" />
+    <Compile Include="MinedOut\Field.cs" />
+    <Compile Include="MinedOut\GamePlay.cs" />
+    <Compile Include="MinedOut\Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursiveList\AddNode.cs" />
     <Compile Include="RecursiveList\DeleteNode.cs" />
