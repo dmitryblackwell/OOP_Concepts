@@ -18,16 +18,16 @@ namespace OOP_Concepts.MinedOut
                 switch (cki.Key)
                 {
                     case ConsoleKey.RightArrow:
-                        map.moveRight();
+                        map.movePlayerRight();
                         break;
                     case ConsoleKey.LeftArrow:
-                        map.moveLeft();
+                        map.movePlayerLeft();
                         break;
                     case ConsoleKey.UpArrow:
-                        map.moveUp();
+                        map.movePlayerUp();
                         break;
                     case ConsoleKey.DownArrow:
-                        map.moveDown();
+                        map.movePlayerDown();
                         break;
                     case ConsoleKey.E:
                         isAlive = false;
