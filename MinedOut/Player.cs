@@ -35,8 +35,18 @@ namespace OOP_Concepts.MinedOut
 
             if ( isInBound(nX, nY, map))
             {
-                if (map[nY, nX].isThisBomb())
-                    lifes--;
+                switch (map[nY, nX].getKey())
+                {
+                    case (int) Cell.Field.BOMB:
+                        lifes--;
+                        break;
+                    case (int) Cell.Field.MONEY:
+                        money++;
+                        break;
+                    case (int) Cell.Field.LIFE:
+                        lifes++;
+                        break;
+                }
                 map[y, x] = new Cell(Cell.Field.DOT);
                 map[nY, nX] = new Cell(Cell.Field.PLAYER);
 
@@ -57,7 +67,7 @@ namespace OOP_Concepts.MinedOut
                 int nY = y + cord.getY();
 
                 if (isInBound(nX, nY, map) &&
-                    map[nY, nX].isThisBomb())
+                    map[nY, nX].getKey() == (int) Cell.Field.BOMB)
                         bombsCount++;
             }
             return Convert.ToChar(bombsCount);

@@ -10,13 +10,13 @@ namespace OOP_Concepts.MinedOut
         public static String[] startMap =
            {"#               B  #",
             "#B              B  #",
-            "#        B  B      #",
+            "#        B@ B      #",
             "#   P      B       #",
-            "#                  #",
-            "#     B       B    #",
-            "#  B               #",
-            "#         B    B   #",
-            "# B  B     B B     #",
+            "# @       $  $     #",
+            "#     B   @   B    #",
+            "#  B        $      #",
+            "#     @   B    B   #",
+            "# B  B  $  B B     #",
             "####################"};
         public static String[] advanceMapFree =
            {"#                                           #",

@@ -7,7 +7,7 @@ namespace OOP_Concepts.MinedOut
 {
     class Cell
     {
-        public enum Field { FREE_SPACE, WALL, BOMB, PLAYER, DOT, MONEY };
+        public enum Field { FREE_SPACE, WALL, BOMB, PLAYER, DOT, MONEY, LIFE };
         private char symbol;
         private int key;
         /* 
@@ -32,6 +32,14 @@ namespace OOP_Concepts.MinedOut
         {
             return symbol;
         }
+        public int getKey()
+        {
+            return key;
+        }
+        public bool isThisPlayer()
+        {
+            return key == (int)Field.PLAYER;
+        }
         public Cell(Field f)
         {
             symbol = getSymbol((int)f);
@@ -43,14 +51,6 @@ namespace OOP_Concepts.MinedOut
                 Console.Write(getSymbol((int)Field.FREE_SPACE));
             else
                 Console.Write(symbol);
-        }
-        public bool isThisBomb()
-        {
-            return key == (int) Field.BOMB;
-        }
-        public bool isThisPlayer()
-        {
-            return key == (int) Field.PLAYER;
         }
         /* Унарный опертор
         public static Cell operator ++(Cell c)
@@ -96,6 +96,9 @@ namespace OOP_Concepts.MinedOut
                 case (int)Field.MONEY:
                     ch = '$';
                     break;
+                case (int)Field.LIFE:
+                    ch = '@';
+                    break;
             }
             return ch;
         }
@@ -122,6 +125,9 @@ namespace OOP_Concepts.MinedOut
                     break;
                 case '$':
                     elementCode = (int)Field.MONEY;
+                    break;
+                case '@':
+                    elementCode = (int)Field.LIFE;
                     break;
             }
             return elementCode;
