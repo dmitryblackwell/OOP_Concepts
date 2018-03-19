@@ -14,14 +14,27 @@ namespace OOP_Concepts.MinedOut
             while (isAlive)
             {
                 map.drawMap();
-                String keyInfo = Console.ReadKey().ToString();
                 ConsoleKeyInfo cki= Console.ReadKey();
-                if (cki.Key == ConsoleKey.RightArrow)
-                    map.movePlayerRight();
-                
+                switch (cki.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        map.moveRight();
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        map.moveLeft();
+                        break;
+                    case ConsoleKey.UpArrow:
+                        map.moveUp();
+                        break;
+                    case ConsoleKey.DownArrow:
+                        map.moveDown();
+                        break;
+                    case ConsoleKey.E:
+                        isAlive = false;
+                        break;
+                }
                 Console.Clear();
             }
-            Console.ReadKey();
         }
     }
 }
