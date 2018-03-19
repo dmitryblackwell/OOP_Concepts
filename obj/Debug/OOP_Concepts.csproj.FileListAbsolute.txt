@@ -10,3 +10,6 @@ C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csprojResolve
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CoreCompileInputs.cache
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.exe
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CopyComplete

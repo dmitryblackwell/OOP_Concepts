@@ -10,6 +10,7 @@ namespace OOP_Concepts.MinedOut
         private int lifes = 3;
         private int bombsAround;
         private int money = 0;
+        private Coordinates privCord;
         private int x, y;
 
         public enum Move { Right, Left, Up, Down };
@@ -19,9 +20,13 @@ namespace OOP_Concepts.MinedOut
         {
             x = x_;
             y = y_;
+            privCord = new Coordinates(x, y);
         }
         public Player() : this(0, 0) { }
-
+        public int getLifes() { return lifes; }
+        public int giveMeYourMoney() { return money; }
+        public void setLifes(int l) { lifes = l; }
+        public void setMoney(int m) { money = m; }
         public void movePlayer(ref Cell[,] map,int whereTo)
         {
             Coordinates nextCord = Coordinates.getCoordinatesTo(whereTo);
@@ -30,6 +35,8 @@ namespace OOP_Concepts.MinedOut
 
             if ( isInBound(nX, nY, map))
             {
+                if (map[nY, nX].isThisBomb())
+                    lifes--;
                 map[y, x] = new Cell(Cell.Field.DOT);
                 map[nY, nX] = new Cell(Cell.Field.PLAYER);
 
@@ -37,6 +44,7 @@ namespace OOP_Concepts.MinedOut
                 y = nY;
             }
         }
+
 
         private const int ZERO_CODE = 48;
         public char getBombsAroundPlayer(Cell[,] map)

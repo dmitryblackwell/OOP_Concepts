@@ -28,6 +28,10 @@ namespace OOP_Concepts.MinedOut
             symbol = s;
             key = getKey(s);
         }
+        public char getSymbol()
+        {
+            return symbol;
+        }
         public Cell(Field f)
         {
             symbol = getSymbol((int)f);
@@ -35,9 +39,9 @@ namespace OOP_Concepts.MinedOut
         }
         public void print()
         {
-           /* if (key == (int)Field.BOMB)
+           if (key == (int)Field.BOMB)
                 Console.Write(getSymbol((int)Field.FREE_SPACE));
-            else*/
+            else
                 Console.Write(symbol);
         }
         public bool isThisBomb()
@@ -51,7 +55,7 @@ namespace OOP_Concepts.MinedOut
         /* Унарный опертор
         public static Cell operator ++(Cell c)
         {
-            c.key++;
+            c.key++;i
             if (c.key > getFieldLength())
                 c.key = 0;
             return c;
