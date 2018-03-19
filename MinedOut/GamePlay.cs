@@ -7,7 +7,7 @@ namespace OOP_Concepts.MinedOut
 {
     class GamePlay
     {
-        Map map = new Map(CustomMaps.startMap);
+        Map map = new Map(CustomMaps.advanceMapFree);
         
         public GamePlay()
         {
@@ -15,6 +15,7 @@ namespace OOP_Concepts.MinedOut
             while (map.getPlayersAlive() && isPlaying)
             {
                 map.drawMap();
+                isPlaying = !map.isGameFinish();
                 ConsoleKeyInfo cki= Console.ReadKey();
                 switch (cki.Key)
                 {
@@ -49,7 +50,7 @@ namespace OOP_Concepts.MinedOut
                 }
                 Console.Clear();
             }
-            Console.WriteLine("Game Over!");
+
         }
     }
 }

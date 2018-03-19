@@ -13,3 +13,6 @@ C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CopyComplete
+D:\Projects\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CopyComplete
