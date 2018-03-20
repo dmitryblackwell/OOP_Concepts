@@ -2,54 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace OOP_Concepts.MinedOut
 {
     class GamePlay
     {
         Map map = new Map(CustomMaps.advanceMapFree);
-        
-        public GamePlay()
+        ConsoleUI cui = new ConsoleUI(CustomMaps.advanceMapFree);
+
+        public GamePlay(bool isConsole)
         {
-            bool isPlaying = true;
-            while (map.getPlayersAlive() && isPlaying)
+            if (isConsole)
             {
-                map.drawMap();
-                isPlaying = !map.isGameFinish();
-                ConsoleKeyInfo cki= Console.ReadKey();
-                switch (cki.Key)
-                {
-                    case ConsoleKey.D:
-                    case ConsoleKey.RightArrow:
-                        map.movePlayerRight();
-                        break;
-                    case ConsoleKey.A:
-                    case ConsoleKey.LeftArrow:
-                        map.movePlayerLeft();
-                        break;
-                    case ConsoleKey.W:
-                    case ConsoleKey.UpArrow:
-                        map.movePlayerUp();
-                        break;
-                    case ConsoleKey.S:
-                        if (cki.Modifiers == ConsoleModifiers.Control)
-                            map.save();
-                        else
-                            map.movePlayerDown();
-                        break;
-                    case ConsoleKey.DownArrow:
-                        map.movePlayerDown();
-                        break;
-                    case ConsoleKey.E:
-                        isPlaying = false;
-                        break;
-                    case ConsoleKey.L:
-                        if(cki.Modifiers == ConsoleModifiers.Control)
-                            map.load();
-                        break;
-                }
+                cui.Run();
                 Console.Clear();
             }
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new GraphicalUI());
+            }
+
 
         }
     }

@@ -33,23 +33,26 @@ namespace OOP_Concepts.RecursiveList
             
             Node n = root;
             Console.Write(n.value + ((n.next.next == null) ? "" : " -> "));
-            while (n.next.next != null)
+            while (n.next != null && n.next.next != null)
             {
                 n = new Node(n.next.next);
-                Console.Write(n.value + ((n.next.next == null) ? "" : " -> "));
+                Console.Write(n.value + " -> ");
             }
+            Console.WriteLine();
         }
-        public void get(int[] num)
+        public int get(int[] num)
         {
             try
             {
                 int element = get(root, 0, num[0]);
                 Console.WriteLine(element);
+                return element;
             }
             catch (ElementNotFoundException e)
             {
                 Console.WriteLine("Element no found");
             }
+            return 0;
         }
         public void set(int[] args)
         {
@@ -62,7 +65,22 @@ namespace OOP_Concepts.RecursiveList
                 Console.WriteLine("Element no found");
             }
         }
-
+        // индексатор
+        // print od
+        //average
+        public int this[int key]
+        {
+            get
+            {
+                int[] k = { key };
+                return get(k);
+            }
+            set
+            {
+                int[] data = { key, value };
+                set(data);
+            }
+        }
         private int get(Node n, int count, int num)
         {
             if (count == num)
@@ -85,6 +103,12 @@ namespace OOP_Concepts.RecursiveList
         }
         private float signedAverage(Node n, int sum, int count)
         {
+            if (n.value < 0)
+            {
+                sum += n.value;
+                ++count;
+            }
+
             if (n.next == null) {
                 try{
                     return sum / count;
@@ -95,11 +119,6 @@ namespace OOP_Concepts.RecursiveList
                 }
             }
 
-            if (n.value < 0)
-            {
-                sum += n.value;
-                ++count;
-            }
             return signedAverage(n.next, sum, count);
             
         }

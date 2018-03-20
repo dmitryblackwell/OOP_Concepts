@@ -16,3 +16,5 @@ C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CopyCo
 D:\Projects\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\GitHub\OOP_Concepts\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CopyComplete
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.MinedOut.GraphicalUI.resources
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.GenerateResource.cache

@@ -36,6 +36,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,9 +55,16 @@
     <Compile Include="HelpStrings.cs" />
     <Compile Include="InputPoint.cs" />
     <Compile Include="MinedOut\Cell.cs" />
+    <Compile Include="MinedOut\ConsoleUI.cs" />
     <Compile Include="MinedOut\Coordinates.cs" />
     <Compile Include="MinedOut\CustomMaps.cs" />
     <Compile Include="MinedOut\GamePlay.cs" />
+    <Compile Include="MinedOut\GraphicalUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MinedOut\GraphicalUI.Designer.cs">
+      <DependentUpon>GraphicalUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="MinedOut\Map.cs" />
     <Compile Include="MinedOut\MapFile.cs" />
     <Compile Include="MinedOut\Player.cs" />
@@ -68,6 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MinedOut\GraphicalUI.resx">
+      <DependentUpon>GraphicalUI.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

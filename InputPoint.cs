@@ -7,10 +7,10 @@ namespace OOP_Concepts
 {
     class InputPoint {
         static void Main(string[] args){
-            //ConsoleInterface ci = new ConsoleInterface();
-            //ci.runConsole();
-            GamePlay gp = new GamePlay();
-            Console.ReadKey();
+            ConsoleInterface ci = new ConsoleInterface();
+            ci.runConsole();
+
+            //Console.ReadKey();
         }
     }
 }

@@ -8,7 +8,6 @@ namespace OOP_Concepts.Dorm
 {
     public partial class Dormitory
     {
-
         private const int TOTAL_ROOMS = 9;
         private const int TOTAL_FLOORS = 3;
         Room[] rooms = new Room[TOTAL_ROOMS] {new Room(1, 1, 4, new String[] { "Franz Kafka", "Lev Tolstoi", "Mikhail Lermontov", "Vera Nabokov"}),
@@ -22,7 +21,21 @@ namespace OOP_Concepts.Dorm
                                     new Room(7, 3, 2, new String[] {"Leil Lowndes", "Charles Bukowski"}),
                                     new Room(8, 3, 3, new String[] {"Joanne Rowling", "Charles Dickens", "Charles Darwin"}),
                                     new Room(9, 3, 4, new String[] {"Ayn Rand", "Jerome Salinger", "Herbert Schildt", "Bruce Eckel"})};        
-    
+        
+
+        public void addStudent()
+        {
+            Room[] sortedRooms = getSortedRooms(rooms);
+            int RoomNumber = 0;
+            if (sortedRooms[0].StudentsCount != Room.MAX_STUDENTS_IN_ROOM)
+                RoomNumber = sortedRooms[0].RoomNum;
+            else
+                return;
+            Console.WriteLine("Enter student name: ");
+            String name = Console.ReadLine();
+            rooms[RoomNumber - 1].addStudent(name);
+            Console.WriteLine("Student added to room " + RoomNumber);
+        }
 
         public void printAllRooms()
         {

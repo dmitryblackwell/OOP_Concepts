@@ -51,7 +51,11 @@ namespace OOP_Concepts.Dorm
             }
             return false;
         }
-        
+        public void addStudent(String name)
+        {
+            students[StudentsCount] = name;
+            studentCount++;
+        }
         public int FloorNum {
             get { return this.floorNum; }
         }
@@ -61,6 +65,8 @@ namespace OOP_Concepts.Dorm
         public int StudentsCount
         {
             get { return this.studentCount; }
+            set { this.studentCount = StudentsCount; }
         }
+
     }
 }

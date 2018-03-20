@@ -67,25 +67,16 @@ namespace OOP_Concepts.MinedOut
             }
             return false;
         }
+        public int GetLengthX() { return lengthX; }
+        public int GetLengthY() { return lengthY; }
+        public Cell GetCell(int line, int row) { return map[line, row]; }
+        public Player GetPlayer() { return player; }
 
-        public void drawMap()
-        {
-            // TODO SetCursorPosition 
-            for (int i = 0; i < lengthY; ++i)
-            {
-                for (int j = 0; j < lengthX; ++j)
-                {
-                    if (map[i, j].isThisPlayer())
-                        Console.Write(player.getBombsAroundPlayer(map));
-                    else
-                        map[i, j].print();
-                }
-                Console.Write("\n");
-            }
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Lifes: " + player.getLifes());
-            Console.WriteLine("Money: " + player.giveMeYourMoney());
+        public char getSymbolFor(int i,int j) {
+            if(map[i, j].isThisPlayer())
+                return player.getBombsAroundPlayer(map);
+            else
+                return map[i, j].GetPrintAbleSymbol();
         }
     }
 }

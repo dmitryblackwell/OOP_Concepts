@@ -14,7 +14,15 @@ namespace OOP_Concepts.RecursiveList
         }
         public void deleteOne(int value)
         {
-            deleteElement(root, value,true);
+            if (root.value == value)
+            {
+                if (root.next != null)
+                    root = new Node(root.next);
+                else
+                    clear();
+            }
+            else
+                deleteElement(root, value,true);
         }
         public void deleteAll(int value)
         {
@@ -45,7 +53,10 @@ namespace OOP_Concepts.RecursiveList
 
             while (n.next.value == value)
             {
-                n.next = new Node(n.next.next);
+                if (n.next.next == null)
+                    n.next = null;
+                else
+                    n.next = new Node(n.next.next);
                 if (isOne)
                     return;
             }

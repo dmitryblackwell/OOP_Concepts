@@ -25,7 +25,12 @@ namespace OOP_Concepts.RecursiveList
 
         public void addBefore(int[] args) // add one element before another
         {
-            addBefore(root, args[1], args[0]);
+            if (root.value == args[0])
+            {
+                root = new Node(args[1], root);
+            }
+            else
+                addBefore(root, args[0], args[1]);
         }
          
 
@@ -35,7 +40,7 @@ namespace OOP_Concepts.RecursiveList
             if (n.next != null && n.next.value == before)
                 n.next = new Node(value, n.next);
             else if (n.next != null)
-                addBefore(n.next, value, before);
+                addBefore(n.next, before, value);
         }
 
         private void plusList(Node n, Node list)

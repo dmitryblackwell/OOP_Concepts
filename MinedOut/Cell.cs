@@ -45,12 +45,15 @@ namespace OOP_Concepts.MinedOut
             symbol = getSymbol((int)f);
             key = getKey(symbol);
         }
+        public char GetPrintAbleSymbol() {
+            if (key == (int)Field.BOMB)
+                return getSymbol((int)Field.FREE_SPACE);
+            else
+                return symbol;
+        }
         public void print()
         {
-           if (key == (int)Field.BOMB)
-                Console.Write(getSymbol((int)Field.FREE_SPACE));
-            else
-                Console.Write(symbol);
+            Console.Write(GetPrintAbleSymbol());
         }
         /* Унарный опертор
         public static Cell operator ++(Cell c)

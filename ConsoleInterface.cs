@@ -1,4 +1,5 @@
 ﻿using OOP_Concepts.Dorm;
+using OOP_Concepts.MinedOut;
 using OOP_Concepts.RecursiveList;
 using System;
 
@@ -116,6 +117,9 @@ namespace OOP_Concepts
         {
             switch (cmd[1])
             {
+                case "--add":
+                    dorm.addStudent();
+                    break;
                 case "-f":
                 case "--find":
                     if (cmd.Length == 4)
@@ -146,6 +150,19 @@ namespace OOP_Concepts
             }
         }
 
+        private void gameCmd(String[] cmd)
+        {
+            GamePlay gp;
+            switch (cmd[1])
+            {
+                case "-c":
+                    gp = new GamePlay(true);
+                    break;
+                case "-g":
+                    gp = new GamePlay(false);
+                    break;
+            }
+        }
         private void performCmd(String[] cmd) //general cmds
         {
             switch (cmd[0])
@@ -157,6 +174,9 @@ namespace OOP_Concepts
                     break;
                 case "list":
                     listCmd(cmd);
+                    break;
+                case "game":
+                    gameCmd(cmd);
                     break;
                 case "help":
                     Console.Write(GENERAL_HELP);

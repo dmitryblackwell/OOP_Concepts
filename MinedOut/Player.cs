@@ -33,7 +33,7 @@ namespace OOP_Concepts.MinedOut
             int nX = x + nextCord.getX();
             int nY = y + nextCord.getY();
 
-            if ( isInBound(nX, nY, map))
+            if ( isInBound(nX, nY, map) && map[nY,nX].getKey() != (int) Cell.Field.WALL)
             {
                 switch (map[nY, nX].getKey())
                 {
