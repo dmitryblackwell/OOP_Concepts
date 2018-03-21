@@ -65,9 +65,6 @@ namespace OOP_Concepts.RecursiveList
                 Console.WriteLine("Element no found");
             }
         }
-        // индексатор
-        // print od
-        //average
         public int this[int key]
         {
             get

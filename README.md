@@ -10,6 +10,20 @@ Create array with information about dormitory: room number, floor number, Studen
 3) For every floor write number of free rooms and occupancy percent.
 ### Solution
 I create Class Dormitory and Room. In Dormitory I create array of rooms and write there RoomNumber, FloorNumber, StudentsCount and array of Students names and surnames. In Room I get all this numbers, create constructor and method print.
+#### Dorm parameters and methods with description
+
+| Access level | Return value | Name | Description |
+| ------------ | ------------ | ---- | ----------- |
+| private      | const int    | TOTAL_ROOMS | Constant value of total rooms in one dormitory. For this data it is equals 9.|
+| private      | const int    | TOTAL_FLOORS| Constant value of total floors in this dormitory. Equals 3.|
+| private      | const int    | TOTAL_FLOORS| Constant value of total floors in this dormitory. Equals 3.|
+| private      | Room[]       | rooms       | Array of total Rooms in one dormitory. Length equals TOTAL_ROOMS|
+| public       | void         | printAllRooms() | Print whole information about rooms in array rooms. | 
+| public       | void         | printFreeRooms () | Print number of rooms and free beds there in increasing order. |
+| public       | void         | findStudent (String name) | Finds student in all rooms. If there are two student with same surname, print both.|
+| public       | void         | GetRoomOccupancy () | Print room occupancy on floor int percent | 
+| public       | void         | addStudent () | Add student to the most free rooms | 
+| private      | Room[]       | getSortedRooms (Room[] r) | Sorts r by number of free rooms there and returns a copy of room array. Realized with bubble sort.|
 
 #### Here simple Tree of classes:
 
@@ -23,6 +37,7 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
      - `public void printFreeRooms ();`
      - `public void findStudent (String name);`
      - `public void GetRoomOccupancy ();`
+     - `public void addStudent ();`
      - `private Room[] getSortedRooms (Room[] r);`
 
 1. Room
@@ -36,14 +51,15 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
      - `public Room (Room r);`
      - `public Room (int roomNum, int floorNum, int studentCount, String[] students);`
      - `public bool isThereStudent (String name);`
+     - `public void addStudent (String name);`
      - `public void print ();`
 ## RecursiveList
 ### Task
 Create class, that realized one-way linked recursive list. Example:
-```aidl
+```
 class RList{
-   public int info;
-   public RList next;
+   private int info;
+   private RList next;
 
    public RList(int i, RList n) {
        info = i;
@@ -79,6 +95,7 @@ I created two classes Node and RList. Node is a simple class, that contains valu
      - `private bool isNodeDefined = false;`
    - Methods
      - `// General methods`
+     - `public RList ();`
      - `public void print ();`
      - `public void signedAverage ();`
      - `public void printOdd ();`
@@ -92,7 +109,6 @@ I created two classes Node and RList. Node is a simple class, that contains valu
      - `public void create (int[] ValuePack);`
      - `public void toEnd (int[] ValuePack);`
      - `public void toStart (int[] ValuePack);`
-     - `public void addBefore (int[] args);`
      - `public void addBefore (int[] args);`
      - `private void addBefore (Node n, int before, int value);`
      - `private void plusList (Node n, Node list);`
@@ -166,6 +182,13 @@ exit  - exit from console
 
 
 ## Mined-Out
+
+### Install JSON library. 
+To continue using this game you need to install JSON library. To do so follow instruction bellow.
+```
+"Project" -> "Manage NuGet packages" -> "Search for "newtonsoft json"  -> click "install"
+``` 
+![alt text](https://raw.githubusercontent.com/dmitryblackwell/OOP_Concepts/master/Screenshots/json.jpg)
 
 **Coming soon...**
 <br>
