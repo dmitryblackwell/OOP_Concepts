@@ -37,7 +37,7 @@ namespace OOP_Concepts
             "      --deleteOne      delete first element in list with this value\n"+
             "      --deleteAll      delete all elements in list with this value\n"+
             "\n"+
-            "      --deleteEvent    delete even elemens in list\n"+
+            "      --deleteEven    delete even elemens in list\n"+
             "      --signedAverage  print average of all elements under zerro\n"+
             "      --printOdd       print all odd elements\n"+
             "      --get            get and print elements\n"+

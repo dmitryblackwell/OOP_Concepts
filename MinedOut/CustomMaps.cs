@@ -11,12 +11,12 @@ namespace OOP_Concepts.MinedOut
            {"#               B  #",
             "#B              B  #",
             "#        B@ B      #",
-            "#   P      B       #",
+            "#          B       #",
             "# @       $  $     #",
             "#     B   @   B    #",
             "#  B        $      #",
             "#     @   B    B   #",
-            "# B  B  $  B B     #",
+            "# B  B  $P B B     #",
             "####################"};
 
         public static String[] advanceMapFree =

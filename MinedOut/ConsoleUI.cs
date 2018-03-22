@@ -18,6 +18,7 @@ namespace OOP_Concepts.MinedOut
             bool isPlaying = true;
             while (map.getPlayersAlive() && isPlaying)
             {
+                Console.Clear();
                 drawMap();
                 isPlaying = !map.isGameFinish();
                 ConsoleKeyInfo cki = Console.ReadKey();
@@ -52,8 +53,11 @@ namespace OOP_Concepts.MinedOut
                             map.load();
                         break;
                 }
-                Console.Clear();
             }
+            Rating r = new Rating();
+            r.print();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         private void drawMap()

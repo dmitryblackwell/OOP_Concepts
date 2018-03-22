@@ -156,11 +156,31 @@ namespace OOP_Concepts
             switch (cmd[1])
             {
                 case "-c":
+                case "--create":
+                    // custom map creation
+                    break;
+                case "-l":
+                case "--load":
+                    // load game
+                    break;
+                case "-n":
+                case "--new":
                     gp = new GamePlay(true);
                     break;
+                case "-r":
+                case "--rating":
+                    Rating r = new Rating();
+                    r.print();
+                    break;
+                case "-w":
                 case "-g":
+                case "--graphic":
                     gp = new GamePlay(false);
                     break;
+                case "-h":
+                case "--help":
+                    // help
+                    break;                
             }
         }
         private void performCmd(String[] cmd) //general cmds
@@ -181,6 +201,8 @@ namespace OOP_Concepts
                 case "help":
                     Console.Write(GENERAL_HELP);
                     break;
+                case "e":
+                case "q":
                 case "exit":
                     isExit = true;
                     break;

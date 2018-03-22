@@ -16,7 +16,6 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
 | ------------ | ------------ | ---- | ----------- |
 | private      | const int    | TOTAL_ROOMS | Constant value of total rooms in one dormitory. For this data it is equals 9.|
 | private      | const int    | TOTAL_FLOORS| Constant value of total floors in this dormitory. Equals 3.|
-| private      | const int    | TOTAL_FLOORS| Constant value of total floors in this dormitory. Equals 3.|
 | private      | Room[]       | rooms       | Array of total Rooms in one dormitory. Length equals TOTAL_ROOMS|
 | public       | void         | printAllRooms() | Print whole information about rooms in array rooms. | 
 | public       | void         | printFreeRooms () | Print number of rooms and free beds there in increasing order. |

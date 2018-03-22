@@ -62,7 +62,10 @@ namespace OOP_Concepts.MinedOut
             }
             if (player.getY() == 0)
             {
-                Console.WriteLine("You win!");
+                Console.WriteLine("You win!\n Enter your name: ");
+                String username = Console.ReadLine();
+                Rating r = new Rating();
+                r.save(username, player.giveMeYourMoney());
                 return true;
             }
             return false;

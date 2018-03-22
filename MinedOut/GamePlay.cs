@@ -8,8 +8,8 @@ namespace OOP_Concepts.MinedOut
 {
     class GamePlay
     {
-        Map map = new Map(CustomMaps.advanceMapFree);
-        ConsoleUI cui = new ConsoleUI(CustomMaps.advanceMapFree);
+        Map map = new Map(CustomMaps.startMap);
+        ConsoleUI cui = new ConsoleUI(CustomMaps.startMap);
 
         public GamePlay(bool isConsole)
         {
