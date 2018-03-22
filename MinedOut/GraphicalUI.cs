@@ -22,15 +22,19 @@ namespace OOP_Concepts.MinedOut
             //handle your keys here
             switch (keyData)
             {
+                case Keys.W:
                 case Keys.Up:
                     map.movePlayerUp();
                     break;
+                case Keys.S:
                 case Keys.Down:
                     map.movePlayerDown();
                     break;
+                case Keys.D:
                 case Keys.Right:
                     map.movePlayerRight();
                     break;
+                case Keys.A:
                 case Keys.Left:
                     map.movePlayerLeft();
                     break;
@@ -43,6 +47,7 @@ namespace OOP_Concepts.MinedOut
             }
             return true;
         }
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -59,11 +64,27 @@ namespace OOP_Concepts.MinedOut
             }
 
             e.Graphics.DrawString("Lifes: "+map.GetPlayer().getLifes().ToString(), myFont, Brushes.Black, map.GetLengthX() , map.GetLengthY() * 13);
-            e.Graphics.DrawString("Money: "+map.GetPlayer().giveMeYourMoney().ToString(), myFont, Brushes.Black, map.GetLengthX(), map.GetLengthY()*14);
-            /*
-            Console.WriteLine("\n");
-            Console.WriteLine("Lifes: " + ;
-            Console.WriteLine("Money: " + map.GetPlayer().giveMeYourMoney());*/
+            e.Graphics.DrawString("Money: "+map.GetPlayer().giveMeYourMoney().ToString(), myFont, Brushes.Black, map.GetLengthX(),  map.GetLengthY()*14);
+         }
+        
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            map.save();
+        }
+        private void loadBtn_Click(object sender, EventArgs e)
+        {
+            map.load();
+            Invalidate();
+        }
+
+        private void ratingBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

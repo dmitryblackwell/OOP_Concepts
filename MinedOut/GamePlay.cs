@@ -21,7 +21,13 @@ namespace OOP_Concepts.MinedOut
             else
             {
                 Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
+                try
+                {
+                    Application.SetCompatibleTextRenderingDefault(false);
+                } catch(System.InvalidOperationException e)
+                {
+
+                }
                 Application.Run(new GraphicalUI());
             }
 
