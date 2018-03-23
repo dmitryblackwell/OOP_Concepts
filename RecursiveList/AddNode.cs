@@ -7,12 +7,14 @@ namespace OOP_Concepts.RecursiveList
         public void create(int[] ValuePack)  // create list and 
         {
             isNodeDefined = true;
+            length += ValuePack.Length - 2;
             addRecursion(root, ValuePack, 0);
         }
 
         public void toEnd(int[] ValuePack) // add elements to the end
         {
             toEndRecursion(root, ValuePack);
+            length += ValuePack.Length -2;
         }
 
         public void toStart(int[] ValuePack) // add elemnts to the start
@@ -20,6 +22,7 @@ namespace OOP_Concepts.RecursiveList
             Node RootTmp = root;
             root = new Node();
             create(ValuePack);
+            //length += 2;
             plusList(root, RootTmp);
         }
 
@@ -31,6 +34,8 @@ namespace OOP_Concepts.RecursiveList
             }
             else
                 addBefore(root, args[0], args[1]);
+
+            length++;
         }
          
 

@@ -11,6 +11,7 @@ namespace OOP_Concepts.RecursiveList
             if (answer.Equals("y") || answer.Equals("Y"))
                 root.next = null;
             isNodeDefined = false;
+            length = 0;
         }
         public void deleteOne(int value)
         {
@@ -23,6 +24,8 @@ namespace OOP_Concepts.RecursiveList
             }
             else
                 deleteElement(root, value,true);
+
+
         }
         public void deleteAll(int value)
         {
@@ -39,10 +42,14 @@ namespace OOP_Concepts.RecursiveList
             if (n.next == null)
                 return;
             else if (n.next.next == null)
+            {
                 n.next = null;
+                length--;
+            }
             else
             {
                 n.next = new Node(n.next.next);
+                length--;
                 deleteEven(n.next);
             }
         }
@@ -51,12 +58,13 @@ namespace OOP_Concepts.RecursiveList
             if (n.next == null)
                 return;
 
-            while (n.next.value == value)
+            if (n.next.value == value)
             {
                 if (n.next.next == null)
                     n.next = null;
                 else
                     n.next = new Node(n.next.next);
+                length--;
                 if (isOne)
                     return;
             }

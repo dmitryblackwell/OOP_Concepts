@@ -6,13 +6,12 @@ namespace OOP_Concepts.RecursiveList
     {
         private Node root;
         private bool isNodeDefined = false;
-
+        private int length;
 
         public RList()
         {
             root = new Node();
         }        
-
         
         public void print()
         {
@@ -22,9 +21,10 @@ namespace OOP_Concepts.RecursiveList
                 Console.Write("null");
             Console.Write("\n");
         }
+
         public void signedAverage()
         {
-            Console.WriteLine(signedAverage(root, 0, 0));
+            Console.WriteLine(signedAverage(root, 0f, 0f));
         }
         public void printOdd()
         {
@@ -65,7 +65,41 @@ namespace OOP_Concepts.RecursiveList
                 Console.WriteLine("Element no found");
             }
         }
-        public int this[int key]
+        public int Length
+        {
+            get { return length; }
+            set
+            {
+                if (value > length)
+                {
+                    int[] Zerros = new int[value - length+2];
+                    //Array.Clear(Zerros, 0, Zerros.Length);
+                    for (int i = 0; i < Zerros.Length; ++i)
+                        Zerros[i] = 0;
+                    toEnd(Zerros);
+                    length = value;
+                }
+                if (value < length)
+                {
+                    if (value == 0)
+                        clear();
+                    else
+                    {
+                        cut(root, value, 0);
+                        length = value;
+                    }
+                }
+
+            }
+        }
+        private void cut(Node n,int newLength, int count)
+        {
+            if (count == newLength-1)
+                n.next = null;
+            else if (n.next != null)
+                cut(n.next, newLength, ++count);
+        }
+        public int this[int key]                   // indexator         //here
         {
             get
             {
@@ -98,7 +132,7 @@ namespace OOP_Concepts.RecursiveList
                 throw new ElementNotFoundException();
             set(n.next, ++count, num, value);
         }
-        private float signedAverage(Node n, int sum, int count)
+        private float signedAverage(Node n, float sum, float count)
         {
             if (n.value < 0)
             {

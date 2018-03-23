@@ -40,6 +40,7 @@ namespace OOP_Concepts
             "-c    --create         create new list, add items as parametrs after\n"+
             "-e    --toEnd          add new items to the end\n"+
             "-s    --toStart        add new items to the start\n"+
+            "-l    --length         print length of list, if add some value after it will end zerros or cut list, depende on arg\n"  
             "\n"+
             "      --clear          delete all elements\n"+
             "-p    --print          print all elements\n"+

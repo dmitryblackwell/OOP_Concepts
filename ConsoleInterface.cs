@@ -97,11 +97,24 @@ namespace OOP_Concepts
                 case "--printOdd":
                     list.printOdd();
                     break;
+                case "-l":
+                case "--length":
+                    if(cmd.Length == 4) //set
+                    {
+                        list.Length = Int32.Parse(cmd[2]);
+                    }
+                    else //get
+                    {
+                        Console.WriteLine(list.Length);
+                    }
+                    break;
                 case "--get":
-                    list.get(getArgs(cmd));
+                    //list.get(getArgs(cmd));
+                    int n = list[Int32.Parse(cmd[2])];
                     break;
                 case "--set":
-                        list.set(getArgs(cmd));
+                    //list.set(getArgs(cmd));
+                    list[Int32.Parse(cmd[2])] =Int32.Parse(cmd[3]);
                     break;
                 case "-?":
                 case "-h":

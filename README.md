@@ -169,6 +169,7 @@ exit  - exit from console
 -c    --create         create new list, add items as parametrs after
 -e    --toEnd          add new items to the end
 -s    --toStart        add new items to the start
+-l    --length         print length of list, if add some value after it will end zerros or cut list, depende on arg
 ```
 ```
       --clear          delete all elements
