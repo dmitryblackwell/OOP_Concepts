@@ -20,7 +20,19 @@ namespace OOP_Concepts.MinedOut
             {
                 Console.Clear();
                 drawMap();
-                isPlaying = !map.isGameFinish();
+                if (map.isGameFinish() == (int) Map.GameEnd.Finish)
+                {
+                    Console.WriteLine("You win!\n Enter your name: ");
+                    String username = Console.ReadLine();
+                    Rating rate = new Rating();
+                    rate.save(username, map.GetPlayer().giveMeYourMoney());
+                    isPlaying = false;
+                }
+                else if (map.isGameFinish() == (int)Map.GameEnd.Dead)
+                {
+                    Console.WriteLine("You dead!");
+                    isPlaying = false;
+                }
                 ConsoleKeyInfo cki = Console.ReadKey();
                 switch (cki.Key)
                 {
@@ -54,8 +66,6 @@ namespace OOP_Concepts.MinedOut
                         break;
                 }
             }
-            Rating r = new Rating();
-            r.print();
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }

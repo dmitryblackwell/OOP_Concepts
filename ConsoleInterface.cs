@@ -161,7 +161,7 @@ namespace OOP_Concepts
                     break;
                 case "-l":
                 case "--load":
-                    // load game
+                    // loading the map
                     break;
                 case "-n":
                 case "--new":
@@ -179,7 +179,7 @@ namespace OOP_Concepts
                     break;
                 case "-h":
                 case "--help":
-                    // help
+                    Console.WriteLine(GAME_HELP);
                     break;                
             }
         }

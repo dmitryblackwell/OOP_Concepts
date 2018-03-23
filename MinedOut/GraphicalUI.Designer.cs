@@ -38,9 +38,10 @@
             // 
             this.saveBtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.saveBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.saveBtn.Location = new System.Drawing.Point(576, 109);
+            this.saveBtn.Location = new System.Drawing.Point(462, 57);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(144, 60);
+            this.saveBtn.Size = new System.Drawing.Size(72, 31);
             this.saveBtn.TabIndex = 0;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = false;
@@ -50,9 +51,10 @@
             // 
             this.loadBtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.loadBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.loadBtn.Location = new System.Drawing.Point(576, 199);
+            this.loadBtn.Location = new System.Drawing.Point(462, 103);
+            this.loadBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(144, 60);
+            this.loadBtn.Size = new System.Drawing.Size(72, 31);
             this.loadBtn.TabIndex = 1;
             this.loadBtn.Text = "Load";
             this.loadBtn.UseVisualStyleBackColor = false;
@@ -62,9 +64,10 @@
             // 
             this.createBtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.createBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.createBtn.Location = new System.Drawing.Point(576, 22);
+            this.createBtn.Location = new System.Drawing.Point(462, 11);
+            this.createBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(144, 60);
+            this.createBtn.Size = new System.Drawing.Size(72, 31);
             this.createBtn.TabIndex = 2;
             this.createBtn.Text = "Create";
             this.createBtn.UseVisualStyleBackColor = false;
@@ -74,9 +77,10 @@
             // 
             this.ratingBtn.BackColor = System.Drawing.SystemColors.HotTrack;
             this.ratingBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.ratingBtn.Location = new System.Drawing.Point(576, 292);
+            this.ratingBtn.Location = new System.Drawing.Point(462, 152);
+            this.ratingBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ratingBtn.Name = "ratingBtn";
-            this.ratingBtn.Size = new System.Drawing.Size(144, 60);
+            this.ratingBtn.Size = new System.Drawing.Size(72, 31);
             this.ratingBtn.TabIndex = 3;
             this.ratingBtn.Text = "Rating";
             this.ratingBtn.UseVisualStyleBackColor = false;
@@ -84,16 +88,18 @@
             // 
             // GraphicalUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(748, 849);
+            this.ClientSize = new System.Drawing.Size(556, 470);
             this.Controls.Add(this.ratingBtn);
             this.Controls.Add(this.createBtn);
             this.Controls.Add(this.loadBtn);
             this.Controls.Add(this.saveBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GraphicalUI";
             this.Text = "GraphicalUI";
+            this.Load += new System.EventHandler(this.GraphicalUI_Load);
             this.ResumeLayout(false);
 
         }

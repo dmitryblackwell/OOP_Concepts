@@ -11,12 +11,22 @@ namespace OOP_Concepts
             "file  - create, run or delete files with cmds, to get more info print: file --help\n"+
             "list  - operated with recurion list, to get more info print: list --help\n"+
             "dorm  - operated with dormitory, to get more info print: dorm --help\n" +
+            "game  - run MinedOut game, to get more info print: game --help\n"+//
             "\n" +
             "#     - comment, put space after it\n" +
             "echo  - print everything that contains after this coommand\n" +
             "clear - clear console\n"+
             "help  - get this help\n"+
             "exit  - exit from console\n"+
+            "\n";
+        private const String GAME_HELP =
+            "\n"+
+            //"-c    --create    create custom map\n"+
+            //"-l    --load      load previus map\n"+
+            "-n    --new       create and load new game\n"+
+            "-r    --rating    print rating\n"+
+            "-g    --graphic   run windows form application with graphi UI\n"+
+            "-h    --help      get help\n"+
             "\n";
         private const String FILE_HELP = 
             "\n"+

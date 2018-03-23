@@ -10,7 +10,8 @@ namespace OOP_Concepts
         static void Main(string[] args){
             ConsoleInterface ci = new ConsoleInterface();
             ci.runConsole();
-            
+
+            //GamePlay gp = new GamePlay(false);
             //Console.ReadKey();
         }
     }

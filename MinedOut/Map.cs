@@ -48,27 +48,18 @@ namespace OOP_Concepts.MinedOut
                         map[i, j] = new Cell(Cell.Field.BOMB);
                     else if (r.Next(20) == 0)
                         map[i, j] = new Cell(Cell.Field.MONEY);
-                    else if (r.Next(30) == 0)
-                        map[i, j] = new Cell(Cell.Field.MONEY);
+                    else if (r.Next(70) == 0)
+                        map[i, j] = new Cell(Cell.Field.LIFE);
                 }
         }
-
-        public bool isGameFinish()
+        public enum GameEnd { Continue, Dead, Finish };
+        public int isGameFinish()// 0 - continue //1 -dead // 2- finish
         {
             if (player.getLifes() <= 0)
-            {
-                Console.WriteLine("Game Over!");
-                return true;
-            }
+                return (int)GameEnd.Dead;
             if (player.getY() == 0)
-            {
-                Console.WriteLine("You win!\n Enter your name: ");
-                String username = Console.ReadLine();
-                Rating r = new Rating();
-                r.save(username, player.giveMeYourMoney());
-                return true;
-            }
-            return false;
+                return (int)GameEnd.Finish;
+            return (int)GameEnd.Continue;
         }
         public int GetLengthX() { return lengthX; }
         public int GetLengthY() { return lengthY; }

@@ -121,6 +121,19 @@ I created two classes Node and RList. Node is a simple class, that contains valu
      - `private void deleteEven(Node n);`
      - `private void deleteElement(Node n,int value, bool isOne);`
 
+## Mined-Out
+
+### Install JSON library. 
+To continue using this game you need to install JSON library. To do so follow instruction bellow.
+```
+"Project" -> "Manage NuGet packages" -> "Search for "newtonsoft json"  -> click "install"
+``` 
+![alt text](https://raw.githubusercontent.com/dmitryblackwell/OOP_Concepts/master/Screenshots/json.jpg)
+
+**Coming soon...**
+<br>
+<br>
+<br>
 
 ## Console User Interface - CUI
 In this CUI exists simple constructor to build every program:
@@ -134,6 +147,7 @@ You can anytime get help. If you want to know what ProgramName exits there just 
 file  - create, run or delete files with cmds, to get more info print: file --help
 list  - operated with recurion list, to get more info print: list --help
 dorm  - operated with dormitory, to get more info print: dorm --help
+game  - run MinedOut game, to get more info print: game --help
 ```
 ```
 #     - comment, put space after it
@@ -178,20 +192,14 @@ exit  - exit from console
 -p    --print      print all rooms
 -h    --help       get help
 ```
-
-
-## Mined-Out
-
-### Install JSON library. 
-To continue using this game you need to install JSON library. To do so follow instruction bellow.
+#### **Game help**
 ```
-"Project" -> "Manage NuGet packages" -> "Search for "newtonsoft json"  -> click "install"
-``` 
-![alt text](https://raw.githubusercontent.com/dmitryblackwell/OOP_Concepts/master/Screenshots/json.jpg)
+-n    --new       create and load new game
+-r    --rating    print rating
+-g    --graphic   run windows form application with graphi UI
+-h    --help      get help
+```
 
-**Coming soon...**
-<br>
-<br>
-<br>
+
 
 > author @dmitryblackwell
