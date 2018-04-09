@@ -130,7 +130,140 @@ To continue using this game you need to install JSON library. To do so follow in
 ``` 
 ![alt text](https://raw.githubusercontent.com/dmitryblackwell/OOP_Concepts/master/Screenshots/json.jpg)
 
-**Coming soon...**
+### Project tree
+
+<br>
+<br>
+
+#### GamePlay
+Class simply pick up bool and call appropriate constructor: ConsoleUI, GraphicalUI.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private Map       | map  | New Map exemplar from CustomMaps |
+| private ConsoleUI | cui  | New ConsoleUI from CustomMaps |
+| public            | GamePlay(bool isConsole)| Constructor |
+
+<br>
+<br>
+
+#### Cell
+Cell or Field of every dot on the map, Mainly contains symbol to draw and it key equivalent.  
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| public enum  | Field | { FREE_SPACE, WALL, BOMB, PLAYER, DOT, MONEY, LIFE }|
+| private char | symbol| Symbol that contains in this cell|
+| private int  | key   | Key of that symbol|
+| public       | Cell(int k) | Constructor for key |
+| public       | Cell(char s)| Constructor for symbol |
+| public       | Cell(Field f)| Get Symbol as Field enum above|
+| public char  | getSymbol() | Return this.symbol |
+| public int   | getKey()    | Return this.key |
+| public bool  | isThisPlayer()| Return true if this cell contain player|
+| public char  | GetPrintAbleSymbol() | Return symbol for printing. For example if it is bomb, this method return " "|
+| public void  | print() | Print this cell |
+| private char |getSymbol(int key) | Convert key to symbol |
+| private int  | getKey(char ch) | Convert symbol to key"
+
+<br>
+<br>
+
+#### Map
+Contains everything map does. Array of cell and method to rule it.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private Player    |player|  |
+| private Cell[,]   | map  |  |
+| private int       | lengthX, lengthY | Width and height of the map |
+| public bool       | getPlayersAlive()| Return true if player alive |
+| private void      | movePlayer(int whereTo)| Moves player to direction, that depends on pressed key |
+| public void       | movePlayerLeft() | |
+| public void       | movePlayerRight()| |
+| public void       | movePlayerUp() | |
+| public void       | movePlayerDown()| |
+| private void      | MapInit(String[] MapStart)| Initialization of Map from String |  
+| public            | Map(String[] map) | Calls MapInit and then fill it randomly with elements | 
+| private void      | fillRandom() | Fill whole map in random position with bombs, money and lives |
+| public enum       | GameEnd | { Continue, Dead, Finish } |
+| public int        | isGameFinish() | Return true if GameOver |
+| public int        | GetLengthX() | |  
+| public int        | GetLengthY() | |
+| public Cell       | GetCell(int line, int row) | Return map[line, row] |
+| public Player     | GetPlayer() | Return player |
+| public char       | getSymbolFor(int i,int j) | Return symbol for y,x |
+| public class      | DataPack | Class with public parameters: _id, lifes, money, saveMap, for saving it to JSON|
+| private const String | SAVE_FILE |File where we save and load our game: "saves.json"|
+| public void       | save() | Save game |
+| public void       | load() | Load game |
+
+<br>
+<br>
+
+#### Player
+Player, his coord, money, lifes, and methods to rule it.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private int       | lifes| Countof lifes. From start =3 |
+| private int       | bombsAround |Getting bombs counting around player. Max - 4, Min 0. |
+| private int       | money | |
+| private Coordinates | privCord | Saving previous coordinates |
+| private int       | x, y | Position of player "|
+| public enum       | Move | { Right, Left, Up, Down }| 
+| public int        |getX()| Return x |
+| public int        |getY()| Return y |
+| public            | Player(int x_, int y_) | Constructor |
+| public            | Player() | Create Player with coord(0,0)
+| public int        | getLifes() | Return lifes count |
+| public int        | giveMeYourMoney() | Return money |
+| public void       | setLifes(int l) return lifes = l |
+| public void       |setMoney(int m) | Put new copybook: money = m |
+| public void       | movePlayer(ref Cell[,] map,int whereTo) | Move player to another place. Thinking about servers.|
+| private const int | ZERO_CODE = 48 | Zero in ASCII | |
+| public char       | getBombsAroundPlayer(Cell[,] map) | get bombs around house |
+| private bool      | isInBound(int nX, int nY, Cell[,] map) | Return true if this coordinates is in bound of map |
+
+<br>
+<br>
+
+#### ConsoleUI
+Drawing map and running game in the loop, while it is not over.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private Map       | map  | Exemplar of Map class |
+| public            | ConsoleUI(String[] mapStart) | Constructor, that create map from String|
+| public void       | Run() | Simple GamePlay method that run in console, until game is over|
+| private void      | drawMap() | Drawing map in console |
+ 
+<br>
+<br>
+
+#### Coordinates
+Class to save coordinates and get vX and vY to needed side.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private int       | x, y | Coordinates of point |
+| public            |Coordinates() | Create point with coordinates (0,0) |
+| public int        | getX() |  Return x |
+| public int        | getY() | Return y |
+| public static Coordinates | getCoordinatesTo(int whereTo) | Return Coordinates of vX and vY of direction from whereTo |
+
+<br>
+<br>
+
+#### Rating
+Class for saving and loading rating from file.
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| private const String | SAVE_FILE | File where we are going to save file: "rating.txt" |
+| public void          | save(String u,int s) | Save rating to file |
+| public String[][]    | load() | Load rating |
+| public void          | print() | Load and print to Console rating |
 <br>
 <br>
 <br>
