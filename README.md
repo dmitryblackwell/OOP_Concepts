@@ -196,7 +196,7 @@ Cell or Field of every dot on the map, Mainly contains symbol to draw and it key
 <br>
 <br>
 
-#### <a name="#Map"></a>  Map
+#### <a name="Map"></a>  Map
 Contains everything map does. Array of cell and method to rule it.
 
 | Modifier and Type | Name | Description |
