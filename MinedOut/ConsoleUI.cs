@@ -7,6 +7,7 @@ namespace OOP_Concepts.MinedOut
 {
     class ConsoleUI
     {
+        long TimeStart = 0;
         Map map;
         public ConsoleUI(String[] mapStart)
         {
@@ -15,6 +16,7 @@ namespace OOP_Concepts.MinedOut
 
         public void Run()
         {
+            TimeStart = DateTime.Now.Second;
             bool isPlaying = true;
             while (map.getPlayersAlive() && isPlaying)
             {
@@ -22,10 +24,11 @@ namespace OOP_Concepts.MinedOut
                 drawMap();
                 if (map.isGameFinish() == (int) Map.GameEnd.Finish)
                 {
+                    long TimeEnd = DateTime.Now.Second;
                     Console.WriteLine("You win!\n Enter your name: ");
                     String username = Console.ReadLine();
                     Rating rate = new Rating();
-                    rate.save(username, map.GetPlayer().giveMeYourMoney());
+                    rate.save(username, Convert.ToInt32(TimeEnd - TimeStart), map.GetPlayer().giveMeYourMoney(), map.GetPlayer().getLifes());
                     isPlaying = false;
                 }
                 else if (map.isGameFinish() == (int)Map.GameEnd.Dead)
@@ -50,7 +53,7 @@ namespace OOP_Concepts.MinedOut
                         break;
                     case ConsoleKey.S:
                         if (cki.Modifiers == ConsoleModifiers.Control)
-                            map.save();
+                            map.save(TimeStart);
                         else
                             map.movePlayerDown();
                         break;
@@ -62,7 +65,7 @@ namespace OOP_Concepts.MinedOut
                         break;
                     case ConsoleKey.L:
                         if (cki.Modifiers == ConsoleModifiers.Control)
-                            map.load();
+                            TimeStart = DateTime.Now.Second - map.load();
                         break;
                 }
             }

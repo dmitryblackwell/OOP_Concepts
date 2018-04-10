@@ -11,7 +11,7 @@ namespace OOP_Concepts.MinedOut
            {"#               B  #",
             "#B              B  #",
             "#        B@ B      #",
-            "#          B       #",
+            "#######    B       #",
             "# @       $  $     #",
             "#     B   @   B    #",
             "#  B        $      #",

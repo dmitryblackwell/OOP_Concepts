@@ -11,10 +11,13 @@ namespace OOP_Concepts.MinedOut
 {
     public partial class GraphicalUI : Form
     {
+        private long TimeStart = 0;
+        public long getTimeStart() { return TimeStart; }
 
-        private Map map = new Map(CustomMaps.advanceMapFree);
+        private Map map = new Map(CustomMaps.startMap);
         public GraphicalUI()
         {
+            TimeStart = DateTime.Now.Second;
             InitializeComponent();
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -46,9 +49,13 @@ namespace OOP_Concepts.MinedOut
             }
             else if (map.isGameFinish() == (int)Map.GameEnd.Finish)
             {
+                long TimeEnd = DateTime.Now.Second;
                 String promptValue = Prompt.ShowDialog();
                 Rating r = new Rating();
-                r.save(promptValue, map.GetPlayer().giveMeYourMoney());
+                long timeLong = TimeEnd - TimeStart;
+                int time = Convert.ToInt32(timeLong);
+                r.save(promptValue,time, time, map.GetPlayer().getLifes());
+                //r.save(promptValue, map.GetPlayer().giveMeYourMoney());
                 this.Close();
             }
             else if (map.isGameFinish() == (int)Map.GameEnd.Continue)
@@ -116,15 +123,15 @@ namespace OOP_Concepts.MinedOut
         private void createBtn_Click(object sender, EventArgs e)
         {
             // create your own map
-        }
+        }  
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            map.save();
+            map.save(TimeStart);
         }
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            map.load();
+            TimeStart = DateTime.Now.Second - map.load();
             Invalidate();
         }
 

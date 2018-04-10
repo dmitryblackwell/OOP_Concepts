@@ -10,12 +10,14 @@ namespace OOP_Concepts.MinedOut
         public class DataPack
         {
             public int _id;
+            public long TimePlayed;
             public int lifes;
             public int money;
             public String[] saveMap;
         }
+
         private const String SAVE_FILE = "saves.json";
-        public void save()
+        public void save(long timeStart)
         {
             List<DataPack> data = new List<DataPack>();
             String[] mapStr = new String[lengthY];
@@ -28,6 +30,7 @@ namespace OOP_Concepts.MinedOut
             data.Add(new DataPack()
             {
                 _id = 0,
+                TimePlayed = DateTime.Now.Second - timeStart,
                 lifes = player.getLifes(),
                 money = player.giveMeYourMoney(),
                 saveMap = mapStr
@@ -39,16 +42,20 @@ namespace OOP_Concepts.MinedOut
             //write string to file
             System.IO.File.WriteAllText(SAVE_FILE, json);
         }
-        public void load()
+        public long load()
         {
             using (StreamReader r = new StreamReader(SAVE_FILE))
             {
                 string json = r.ReadToEnd();
                 List<DataPack> data = JsonConvert.DeserializeObject<List<DataPack>>(json);
+                
                 MapInit(data[0].saveMap);
                 player.setLifes(data[0].lifes);
                 player.setMoney(data[0].money);
+
+                return data[0].TimePlayed;
             }
         }
     }
 }
+

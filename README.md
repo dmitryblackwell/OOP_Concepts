@@ -1,16 +1,44 @@
 # OOP_Concepts
 
-## Dorm
+## Content
+1. [Dorm](#dorm)
+   - [Task](#task)
+   - [Solution](#solution)
+     - [Dorm description](#description)
+     - [Tree of classes](#DormTree)
+1. [Recursive List](#list)
+   - [Task](#ListTask)
+   - [Solution](#ListSolution)
+1. [Mined Out](#MinedOut)
+   - [Install JSON library](#json)
+   - [Project tree](#MinedTree)
+     - [GamePlay](#GamePlay)
+     - [Cell](#Cell)
+     - [Map](#Map)
+     - [Player](#Player)
+     - [ConsoleUI](#cui)
+     - [GraphicalUI](#gui)
+     - [Coordinates](#coord)
+     - [Rating](#rating)
+1. [Console User Interface - CUI](#UserInterface)
+   - [General help](#general)
+   - [File help](#file)
+   - [List help](#listHelp)
+   - [Dorm help](#dormHelp)
+   - [Game help](#gameHelp)
 
-### Task
+
+## <a name="dorm"></a> Dorm
+
+### <a name="task"></a> Task
 
 Create array with information about dormitory: room number, floor number, Students in room, surname of students. In one room can be 5 student maximum.
 1) Read surname or name of student and write all rooms with students with this surname.
 2) Write list of all rooms with free beds, sorted in descending order.
 3) For every floor write number of free rooms and occupancy percent.
-### Solution
+### <a name="solution"></a> Solution
 I create Class Dormitory and Room. In Dormitory I create array of rooms and write there RoomNumber, FloorNumber, StudentsCount and array of Students names and surnames. In Room I get all this numbers, create constructor and method print.
-#### Dorm parameters and methods with description
+#### <a name="description"></a> Dorm parameters and methods with description
 
 | Access level | Return value | Name | Description |
 | ------------ | ------------ | ---- | ----------- |
@@ -24,7 +52,7 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
 | public       | void         | addStudent () | Add student to the most free rooms | 
 | private      | Room[]       | getSortedRooms (Room[] r) | Sorts r by number of free rooms there and returns a copy of room array. Realized with bubble sort.|
 
-#### Here simple Tree of classes:
+#### <a name="DormTree"></a> Here simple Tree of classes:
 
 1. Dormitory
    - Parameters
@@ -52,8 +80,8 @@ I create Class Dormitory and Room. In Dormitory I create array of rooms and writ
      - `public bool isThereStudent (String name);`
      - `public void addStudent (String name);`
      - `public void print ();`
-## RecursiveList
-### Task
+## <a name="list"></a>  RecursiveList
+### <a name="ListTask"></a>  Task
 Create class, that realized one-way linked recursive list. Example:
 ```
 class RList{
@@ -76,7 +104,7 @@ class RList{
 7) Non-recursive Method, that print all odd elements.
 8) Method, that print average of numbers under zero.
 9) Get and Set methods for elements in list.
-### Solution
+###  <a name="ListSolution"></a> Solution
 I created two classes Node and RList. Node is a simple class, that contains value and link to next element. RList is more complicated class, that do almost everything. Also I created ElementNotFoundException, that throws, when you try to access node in list, which doesn't exist, usually in Get and Set methods.
 #### Here simple Tree of classes:
 1) Node
@@ -121,21 +149,20 @@ I created two classes Node and RList. Node is a simple class, that contains valu
      - `private void deleteEven(Node n);`
      - `private void deleteElement(Node n,int value, bool isOne);`
 
-## Mined-Out
+## <a name="MinedOut"></a>  Mined-Out
 
-### Install JSON library. 
+### <a name="json"></a>  Install JSON library. 
 To continue using this game you need to install JSON library. To do so follow instruction bellow.
 ```
 "Project" -> "Manage NuGet packages" -> "Search for "newtonsoft json"  -> click "install"
 ``` 
 ![alt text](https://raw.githubusercontent.com/dmitryblackwell/OOP_Concepts/master/Screenshots/json.jpg)
 
-### Project tree
+### <a name="MinedTree"></a>  Project tree
 
 <br>
-<br>
 
-#### GamePlay
+#### <a name="GamePlay"></a>  GamePlay
 Class simply pick up bool and call appropriate constructor: ConsoleUI, GraphicalUI.
 
 | Modifier and Type | Name | Description |
@@ -147,7 +174,7 @@ Class simply pick up bool and call appropriate constructor: ConsoleUI, Graphical
 <br>
 <br>
 
-#### Cell
+#### <a name="Cell"></a>  Cell
 Cell or Field of every dot on the map, Mainly contains symbol to draw and it key equivalent.  
 
 | Modifier and Type | Name | Description |
@@ -169,7 +196,7 @@ Cell or Field of every dot on the map, Mainly contains symbol to draw and it key
 <br>
 <br>
 
-#### Map
+#### <a name="#Map"></a>  Map
 Contains everything map does. Array of cell and method to rule it.
 
 | Modifier and Type | Name | Description |
@@ -201,7 +228,7 @@ Contains everything map does. Array of cell and method to rule it.
 <br>
 <br>
 
-#### Player
+#### <a name="Player"></a>  Player
 Player, his coord, money, lifes, and methods to rule it.
 
 | Modifier and Type | Name | Description |
@@ -228,11 +255,12 @@ Player, his coord, money, lifes, and methods to rule it.
 <br>
 <br>
 
-#### ConsoleUI
+#### <a name="cui"></a>  ConsoleUI
 Drawing map and running game in the loop, while it is not over.
 
 | Modifier and Type | Name | Description |
 | ----------------- | ---- | ----------- |
+| long              | TimeStart | Time in seconds, when you start game |
 | private Map       | map  | Exemplar of Map class |
 | public            | ConsoleUI(String[] mapStart) | Constructor, that create map from String|
 | public void       | Run() | Simple GamePlay method that run in console, until game is over|
@@ -241,7 +269,28 @@ Drawing map and running game in the loop, while it is not over.
 <br>
 <br>
 
-#### Coordinates
+#### <a name="gui"></a>  GraphicalUI
+Same, as Console as
+
+| Modifier and Type | Name | Description |
+| ----------------- | ---- | ----------- |
+| long              | TimeStart | Time in seconds, when you start game |
+| public long       | getTimeStart() |Return TimeStart |
+| private Map       | map  | New map |
+| public            | GraphicalUI() | Constructor |
+| protected override bool | ProcessCmdKey(ref Message msg, Keys keyData) | Obtain click on key and call apropriate method. Check for game ending. |
+| public static     | class Prompt | Class that creates dialog message for showing message, that saves your name. |
+| protected override void | OnPaint(PaintEventArgs e) | Drawing map on screen. |
+| private void      |createBtn_Click(object sender, EventArgs e) | Left mouse click on CreateBtn |
+| private void      | saveBtn_Click(object sender, EventArgs e) |Left click on save button |
+| private void      | loadBtn_Click(object sender, EventArgs e) | Click on load button |
+| private void      | ratingBtn_Click(object sender, EventArgs e) | Click on rating button |
+| private void      | GraphicalUI_Load(object sender, EventArgs e) | Calls, when window is loading |
+
+<br>
+<br>
+
+#### <a name="coord"></a>  Coordinates
 Class to save coordinates and get vX and vY to needed side.
 
 | Modifier and Type | Name | Description |
@@ -255,7 +304,7 @@ Class to save coordinates and get vX and vY to needed side.
 <br>
 <br>
 
-#### Rating
+#### <a name="rating"></a>  Rating
 Class for saving and loading rating from file.
 
 | Modifier and Type | Name | Description |
@@ -268,14 +317,14 @@ Class for saving and loading rating from file.
 <br>
 <br>
 
-## Console User Interface - CUI
+## <a name="UserInterface"></a>  Console User Interface - CUI
 In this CUI exists simple constructor to build every program:
 ````
 %ProgramName%  --%command% %arguments%
 ````
 You can anytime get help. If you want to know what ProgramName exits there just print `help`, if you want to get help for special program, just print `%ProgramName% --help`. Also you can save a bunch of commands in file, just use program `file`. For first lab use `dorm` and for second `list`.
 
-#### **General help**
+#### <a name="general"></a>  **General help**
 ```
 file  - create, run or delete files with cmds, to get more info print: file --help
 list  - operated with recurion list, to get more info print: list --help
@@ -290,14 +339,14 @@ help  - get this help
 exit  - exit from console
 ```
      
-#### **File help**
+#### <a name="file"></a>  **File help**
 ```
 -c    --create    create new file enter name of the file plus .txt as parametr
       --delete    delete file with this name
 "-r   --run       run this file or you can just simply type name of this file without .txt
 -h    --help      get help
 ```
-#### **List help**
+#### <a name="listHelp"></a>  **List help**
 ```
 -c    --create         create new list, add items as parametrs after
 -e    --toEnd          add new items to the end
@@ -318,7 +367,7 @@ exit  - exit from console
       --get            get and print elements
 -h    --help           get help
 ```
-#### **Dorm help**
+#### <a name="dormHelp"></a>  **Dorm help**
 ```
 -f    --find       print room number, where lives this student
       --free       print all free rooms
@@ -326,14 +375,12 @@ exit  - exit from console
 -p    --print      print all rooms
 -h    --help       get help
 ```
-#### **Game help**
+#### <a name="gameHelp"></a>  **Game help**
 ```
 -n    --new       create and load new game
 -r    --rating    print rating
 -g    --graphic   run windows form application with graphi UI
 -h    --help      get help
 ```
-
-
 
 > author @dmitryblackwell
