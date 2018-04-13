@@ -41,6 +41,8 @@ namespace OOP_Concepts
             "-e    --toEnd          add new items to the end\n"+
             "-s    --toStart        add new items to the start\n"+
             "-l    --length         print length of list, and set new length send as parametr\n" +
+            "      --swap           swap to elements, args is two indexes of elements\n" +
+            "      --sort           sorting elements in list\n" +     
             "\n"+
             "      --clear          delete all elements\n"+
             "-p    --print          print all elements\n"+

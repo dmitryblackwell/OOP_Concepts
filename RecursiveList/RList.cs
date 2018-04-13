@@ -161,6 +161,46 @@ namespace OOP_Concepts.RecursiveList
             printRecursion(n.next);
         }
 
+        // a and b - index of two elements
+        public void swap(int a, int b)
+        {
+            try
+            {
+                int NodeA = get(root, 0, a);
+                int NodeB = get(root, 0, b);
+
+                set(root, 0, a, NodeB);
+                set(root, 0, b, NodeA);
+            }catch(ElementNotFoundException e)
+            {
+                Console.WriteLine("Element no found");
+            }
+        }
+
+        private int get(int n)
+        {
+            return get(root, 0, n);
+        }
+
+        private void set(int index, int value)
+        {
+            set(new int[2] { index, value });
+        }
+
+
+        public void sort()  // selection sort
+        {
+            for (int i = 0; i < length - 1; i++)
+            {
+                int maxIndex = i;
+                for (int j = i + 1; j < length; j++)
+                {
+                    if (get(j) < get(maxIndex))
+                        maxIndex = j;
+                }
+                swap(i, maxIndex);
+            }
+        }
         
     }
 }

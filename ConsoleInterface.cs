@@ -116,6 +116,14 @@ namespace OOP_Concepts
                     //list.set(getArgs(cmd));
                     list[Int32.Parse(cmd[2])] =Int32.Parse(cmd[3]);
                     break;
+                case "--swap":
+                    int a = Int32.Parse(cmd[2]);
+                    int b = Int32.Parse(cmd[3]);
+                    list.swap(a,b);
+                    break;
+                case "--sort":
+                    list.sort();
+                    break;
                 case "-?":
                 case "-h":
                 case "--help":

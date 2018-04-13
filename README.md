@@ -132,6 +132,10 @@ I created two classes Node and RList. Node is a simple class, that contains valu
      - `private void set (Node n, int count, int num, int value);`
      - `private float signedAverage (Node n, int sum, int count);`
      - `private void printRecursion (Node n);`
+     - `public void swap(int a, int b);`
+     - `private int get(int n);`
+     - `private void set(int index, int value);`
+     - `public void sort();`
      - `// Add elements`
      - `public void create (int[] ValuePack);`
      - `public void toEnd (int[] ValuePack);`
@@ -352,6 +356,8 @@ exit  - exit from console
 -e    --toEnd          add new items to the end
 -s    --toStart        add new items to the start
 -l    --length         print length of list, and set new length send as parametr
+      --swap           swap to elements, args is two indexes of elements
+      --sort           sorting elements in list
 ```                                          
 ```
       --clear          delete all elements
