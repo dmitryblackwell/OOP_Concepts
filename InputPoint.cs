@@ -1,15 +1,14 @@
 ﻿using System;
-using OOP_Concepts.Dorm;
-using OOP_Concepts.RecursiveList;
-using OOP_Concepts.MinedOut;
 using System.Windows.Forms;
+using OOP_Concepts.BallGame;
 
 namespace OOP_Concepts
 {
     class InputPoint {
         static void Main(string[] args){
             ConsoleInterface ci = new ConsoleInterface();
-            ci.runConsole();
+            //ci.runConsole();
+            GamePlay gp = new GamePlay();
 
             //GamePlay gp = new GamePlay(false);
             //Console.ReadKey();

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BallGame\GamePlay.cs" />
+    <Compile Include="BallGame\Map.cs" />
     <Compile Include="ConsoleInterface.cs" />
     <Compile Include="Dorm\Dormitory.cs" />
     <Compile Include="Dorm\FindFreeRoom.cs" />
@@ -84,5 +86,6 @@
       <DependentUpon>GraphicalUI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
