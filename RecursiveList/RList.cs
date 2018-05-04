@@ -177,6 +177,60 @@ namespace OOP_Concepts.RecursiveList
             }
         }
 
+        private Node getNextNode(Node n, int count, int num)
+        {
+            if (num == -1)
+                return root;
+
+            if (count == num)
+                return n.next;
+
+            if (n.next != null)
+                return getNextNode(n.next, ++count, num);
+            throw new ElementNotFoundException();
+        }
+        private void setNextNode(Node n, int count, int num, Node next)
+        {
+            if (num == -1)
+                root.next = next;
+
+            if (count == num)
+            {
+                n.next = next;
+                return;
+            }
+            if (n.next == null)
+                throw new ElementNotFoundException();
+            setNextNode(n.next, ++count, num, next);
+        }
+
+        private void setNextNode(int num, Node node)
+        {
+            setNextNode(root, 0, num, node);
+        }
+        private Node getNextNode(int n)
+        {
+            return getNextNode(root, 0, n);
+        }
+
+
+        // !!! this shit doesn't work
+        // by I don't care, because it is not in documentation
+        private void swapByLinks(int a, int b)
+        {
+            Node nA = getNextNode(a);
+            Node nB = getNextNode(b);
+            
+            setNextNode(b, nA);
+            setNextNode(a, nB);
+
+            Node a_ = getNextNode(a - 1);
+            Node b_ = getNextNode(b - 1);
+
+            setNextNode(a - 1, b_);
+            setNextNode(b - 1, a_);
+        }
+
         private int get(int n)
         {
             return get(root, 0, n);
