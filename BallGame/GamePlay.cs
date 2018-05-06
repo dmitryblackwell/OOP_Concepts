@@ -22,7 +22,9 @@ namespace OOP_Concepts.BallGame
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
         {
-            map = new Map(MapStr); // инициализация карты
+
+
+            map = new Map(); // инициализация карты
             Run();
         }
         private void Run()
@@ -69,7 +71,7 @@ namespace OOP_Concepts.BallGame
             input.Start();// его запуск
             while (map.isGameOn() && !isExit)
             {
-                Console.Clear(); // все стираем
+                //Console.Clear(); // все стираем
                 map.draw();// Выводим нашу карту
 
                 map.BallStep(); // двигаем мячик

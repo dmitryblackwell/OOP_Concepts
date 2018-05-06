@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace OOP_Concepts.BallGame
 {
@@ -11,46 +12,118 @@ namespace OOP_Concepts.BallGame
     }
     class Map
     {
-        private char[,] map; // двухмерный массив чаров
-        private Point shield; // кординаты щита
-        private Point ball; // кординаты мяча
-        private int vX = -1; // направление движения по Х, может быть -1, 0, 1
-        private int vY = 0; // тоже самое для y
-        private int totalBalls = 0; // всего мячей
-        private int ballsDown = 0; // мячей сбили
+        private Cell[,] map; // двухмерный массив 
+        private Shield shield; // кординаты щита
+        private Ball ball; // кординаты мяча
         private bool settlementShield = false; // нужно ли устанавливать щит
+        private char[,] mapPriv;
+        // Индексатор для матрицы: для получения экземпляра конкретного элемента поля
+        public Cell this[int x, int y]
+        {
+            set { map[y,x] = value; }
+            get { return map[y,x]; }
+        }
+        private const int randWidth = 20;
+        private const int randHeight = 7;
+        public Map()
+        {
+            char[][] gen = new char[randHeight][];
+            Random R = new Random();
+            for (int i = 0; i < randHeight; ++i)
+            {
+                gen[i] = new char[randWidth];
+                for (int j = 0; j < randWidth; ++j)
+                {
 
-        public Map(String[] MapStr)
+                    if (i == 0 || i == randHeight-1 || j == 0 || j == randWidth-1)
+                        gen[i][j] = '#';
+                    else
+                        switch (R.Next(20))
+                        {
+                            case 0:
+                            case 1: gen[i][j] = '#'; break;
+                            case 2: gen[i][j] = '@'; break;
+                            default: gen[i][j] = ' '; break;
+                        }
+                }
+            }
+            gen[R.Next(randHeight)][R.Next(randWidth)] = '/';
+            gen[R.Next(randHeight)][R.Next(randWidth)] = '.';
+
+            String[] res = new String[randHeight];
+            for (int i = 0; i < randHeight; ++i)
+                res[i] = new String(gen[i]);
+            mapInit(res);
+        }
+        private void replaceRandom(String[] mapStr, char ch)
+        {
+            Random R = new Random();
+            int line = R.Next(randHeight);
+            int collumn;
+            StringBuilder sb = new StringBuilder(mapStr[line]);
+            do
+            {
+                collumn = R.Next(randWidth);
+            } while (sb[collumn] == '/');
+            sb[collumn] = ch;
+            mapStr[line] = sb.ToString();
+        }
+        public Map(String[] MapStr)     {   mapInit(MapStr);   }
+        private void mapInit(String[] MapStr)
         {
             // инициализируем карту
-            map = new char[MapStr.Length, MapStr[0].Length];
-            for (int i = 0; i < map.GetLength(0); ++i)
-                for (int j = 0; j < map.GetLength(1); ++j)
-                {
-                    map[i, j] = MapStr[i][j]; // копируем туда символ из строки
-                    if (map[i, j] == '/' || map[i, j] == '\\')
-                        shield = new Point(j, i);
-                    if (map[i, j] == '.')
-                        ball = new Point(j, i);
-                    if (map[i, j] == '@')
-                        totalBalls++;
-                }
-        }
+            map = new Cell[MapStr.Length, MapStr[0].Length];
+            mapPriv = new char[MapStr.Length, MapStr[0].Length];
 
-
-        public void draw() // рисум карту
-        {
             for (int i = 0; i < map.GetLength(0); ++i)
             {
                 for (int j = 0; j < map.GetLength(1); ++j)
-                    Console.Write(map[i, j]);
-                Console.Write("\n");
+                {
+                    switch (MapStr[i][j])
+                    {
+                        case '\\':
+                        case '/':
+                            shield = new Shield(j, i);
+                            map[i, j] = shield;
+                            break;
+                        case '.':
+                            ball = new Ball(j, i);
+                            map[i, j] = ball;
+                            break;
+                        case '@':
+                            map[i, j] = new Energy(j, i);
+                            Energy.plusTotalBall();
+                            break;
+                        case '#':
+                            map[i, j] = new Wall(j, i);
+                            break;
+                        case ' ':
+                            map[i, j] = new Empty(j, i);
+                            break;
+                    }
+                    mapPriv[i, j] = map[i, j].getSymbol();
+                }
+                Console.WriteLine();
             }
+        }
+
+        public void draw() // рисум карту
+        {
+            int CursotTop = Console.CursorTop;
+            for (int i = 0; i < map.GetLength(0); ++i)
+                for (int j = 0; j < map.GetLength(1); ++j)
+                {
+                    if(map[i, j].GetType() == typeof(Ball))
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    map[i, j].draw();
+                }
+            Console.SetCursorPosition(0, CursotTop);
+            
         }
 
         public bool isGameOn() // проверка собрали мы мячи или нет
         {
-            return ballsDown < totalBalls;
+            return Energy.isDownLess();
         }
 
         // движение щита в разные стороны
@@ -62,95 +135,93 @@ namespace OOP_Concepts.BallGame
         // движение щита, вызывается методами выше
         private void move(int vX, int vY)
         {
-            if (map[shield.Y + vY, shield.X + vX] == ' ')
+            if (map[shield.Y + vY, shield.X + vX].GetType() == typeof(Empty))
             {
-                map[shield.Y + vY, shield.X + vX] = map[shield.Y, shield.X];
+                map[shield.Y + vY, shield.X + vX] = shield;
                 if (!settlementShield) // если щит не надо устанавливать
-                    map[shield.Y, shield.X] = ' ';
+                    map[shield.Y, shield.X] = new Empty(shield.X, shield.Y);
                 shield.X += vX;
                 shield.Y += vY;
                 settlementShield = false;
             }
-
         }
 
         // движение мячика
         public void BallStep()
         {
-            switch (map[ball.Y + vY, ball.X + vX])
+            Cell nextCell = map[ball.Y + ball.vY, ball.X + ball.vX];
+            if (nextCell.GetType() == typeof(Energy))
             {
-                case '@':
-                    ballsDown++;
-                    moveBall();
-                    break;
-                case ' ':
-                    moveBall();
-                    break;
-                case '#':
-                    vY *= -1;
-                    vX *= -1;
-                    break;
-                case '\\':
-                    swapVelocity();
-                    changeBallCoords();
+                Energy.plusBallsDown();
+                moveBall();
+            }
+            if (nextCell.GetType() == typeof(Empty))
+            {
+                moveBall();
+            }
+            if (nextCell.GetType() == typeof(Wall))
+            {
+                ball.vY *= -1;
+                ball.vX *= -1;
+            }
+            if (nextCell.GetType() == typeof(Shield))
+            {
+                swapVelocity();
+                if (!shield.isReverse()) {
+                    ball.vX *= -1;
+                    ball.vY *= -1;
+                }
+                ball.moveInside();
+            }
+                //case '\\':
                     // -1  0 ==>  0 -1
                     //  1  0 ==>  0  1
                     //  0  1 ==>  1  0
                     //  0 -1 ==> -1  0
-                    break;
-                case '/':
-                    swapVelocity();
-                    vX *= -1;
-                    vY *= -1;
-                    changeBallCoords();
-
+                //case '/':
                     //  1  0 ==>  0 -1
                     // -1  0 ==>  0  1
                     //  0  1 ==> -1  0
                     //  0 -1 ==>  0  1
-                    break;
-            }
         }
 
         // меняем переменны направления мяча
         private void swapVelocity()
         {
-            map[ball.Y, ball.X] = ' ';
-            changeBallCoords();
-            int tmp = vX;
-            vX = vY;
-            vY = tmp;
+            map[ball.Y, ball.X] = new Empty(ball.X, ball.Y); ;
+            ball.moveInside();
+            ball.swapCoords();
         }
         // передвигаем мячик
         private void moveBall()
         {
-            map[ball.Y + vY, ball.X + vX] = '.';
-            map[ball.Y, ball.X] = ' ';
-            changeBallCoords();
+            map[ball.Y + ball.vY, ball.X + ball.vX] = ball;
+            map[ball.Y, ball.X] = new Empty(ball.X, ball.Y);
+            ball.moveInside();
         }
-        // двигаем мячик
-        private void changeBallCoords()
-        {
-            ball.X += vX;
-            ball.Y += vY;
-        }
+        
         // меняем щиты
         public void swapShields()
         {
-            map[shield.Y, shield.X] = (map[shield.Y, shield.X] == '/') ? '\\' : '/';
+            shield.swap();
         }
         // устанавливаем щит
         public void settleShield()
         {
+            map[shield.Y, shield.X] = new Shield(shield.X, shield.Y, shield.getShieldChar());
             settlementShield = true;
         }
 
     }
 }
 
-
-
 // The Veer Union - Another World Away
 // Blackbriar - Preserved Roses
 // Art of Chaos - Obsession (Surrender Me)
 // Into the Fire - Spit You Out
+// Shatterproof - Cookie cutter Life
+// D.R.U.G.S - If You Think This Song Is About You, It Probably Is
+// For Every Day - Great Unknown
+// Lowborn - Crazy
+// The Night Of - Set Me Free
+// Ashe - Used to it

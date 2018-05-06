@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BallGame\Cell.cs" />
     <Compile Include="BallGame\GamePlay.cs" />
     <Compile Include="BallGame\Map.cs" />
     <Compile Include="ConsoleInterface.cs" />
