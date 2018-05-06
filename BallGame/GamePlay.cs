@@ -36,12 +36,13 @@ namespace OOP_Concepts.BallGame
                     "#!   @         0 #",
                     "##################"    }
            };
-
-        private const int UPDATE_TIME = 400; // время задержки между обновлениями
+        //public static void Main(String[] args) { new GamePlay(); }
+        private const int UPDATE_TIME = 500; // время задержки между обновлениями
         private Map map; // наша карта
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
         {
+            Console.WriteLine("Enter your choice: ");
             String line = Console.ReadLine();
             switch (line.Split(new char[0])[0]) {
                 default:
@@ -85,7 +86,7 @@ namespace OOP_Concepts.BallGame
             // запуск нового потока, для получения нажатых клавишь
             Thread input = new Thread(() =>
             {
-                while (map.isGameOn() && !isExit)
+                while (map.isGameOn() && !isExit && map.isAlive())
                 {
                     Thread.CurrentThread.IsBackground = true;
                     ConsoleKeyInfo cki = Console.ReadKey();
@@ -134,8 +135,9 @@ namespace OOP_Concepts.BallGame
             Thread timeThread = new Thread(() =>
             {
                 int time = 0;
+                Thread.Sleep(100);
                 int drawLine = Console.CursorTop+1;
-                while (map.isGameOn() && !isExit)
+                while (map.isGameOn() && !isExit && map.isAlive())
                 {
                     int cursorLine = Console.CursorTop;
                     Console.SetCursorPosition(0, drawLine);
