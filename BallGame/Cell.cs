@@ -130,4 +130,9 @@ namespace OOP_Concepts.BallGame
             privY = -1;
         }
     }
+
+    class Trap : Cell
+    {
+        public Trap(int x, int y) : base(x,y,'!') { }
+    }
 }

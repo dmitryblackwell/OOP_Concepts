@@ -17,6 +17,7 @@ namespace OOP_Concepts.BallGame
         private Ball ball; // кординаты мяча
         private Teleport teleport = new Teleport();
         private bool settlementShield = false; // нужно ли устанавливать щит
+        private bool alive = true;
         private char[,] mapPriv;
         private const int randWidth = 20;
         private const int randHeight = 7;
@@ -40,6 +41,8 @@ namespace OOP_Concepts.BallGame
                         return true;
             return false;
         }
+
+        public bool isAlive() { return alive; }
 
         // движение щита в разные стороны
         public void moveLeft() { move(-1, 0); }
@@ -99,6 +102,12 @@ namespace OOP_Concepts.BallGame
                     ball.X = coords.X;
                     ball.Y = coords.Y;
                     moveBall();
+                }
+                if(nextCell.GetType() == typeof(Trap))
+                {
+                    ball.vX = 0;
+                    ball.vY = 0;
+                    alive = false;
                 }
             }
             catch (IndexOutOfRangeException e) { }

@@ -6,30 +6,82 @@ namespace OOP_Concepts.BallGame
     class GamePlay
     {
         // карта в виде массива строк
-        private String[] MapStr =
-        {
-            "##################",
-            "#     0          #",
-            "#   @            #",
-            "#            @ ###",
-            "#     /  0     . #",
-            "#  @           ###",
-            "#       @        #",
-            "##################"
-        };
+        private String[][] maps = new String[][]
+             {
+                new String[]
+                {   "##################",
+                    "#     0          #",
+                    "#   @       !    #",
+                    "#            @ ###",
+                    "#     /  0     . #",
+                    "#  @           ###",
+                    "#       @        #",
+                    "##################"    },
+                new String[]
+                {   "##################",
+                    "#                #",
+                    "#    !!!!!!!!    #",
+                    "#  0     #   @   #",
+                    "#     /  #     . #",
+                    "#  @     # @@    #",
+                    "#    @@@@#    0  #",
+                    "##################"    },
+                new String[]
+                {   "##################",
+                    "# @@  #### @@@   #",
+                    "#  /  !!!!       #",
+                    "#     !!@@     0 #",
+                    "#!    !!!!       #",
+                    "#!  @           .#",
+                    "#!   @         0 #",
+                    "##################"    }
+           };
+
         private const int UPDATE_TIME = 400; // время задержки между обновлениями
         private Map map; // наша карта
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
         {
-
-
-            map = new Map(MapStr); // инициализация карты
+            String line = Console.ReadLine();
+            switch (line.Split(new char[0])[0]) {
+                default:
+                case "--new":
+                    map = new Map(maps[0]);
+                    break;
+                case "--rand":
+                    map = new Map();
+                    break;
+                case "--lvl":
+                    map = new Map(maps[ Convert.ToInt32(
+                                line.Split(new char[0]) [1])]);
+                    break;
+                case "--editor":
+                    map = new Map(readMap());
+                    break;
+            }
+          
             Run();
+        }
+        private String[] readMap()
+        {
+            Console.WriteLine("Enter lines number: ");
+            int lines = Convert.ToInt32(Console.ReadLine());
+            String[] mapStr = new String[lines];
+            Console.WriteLine("Enter your map line by line.\n"+
+                                "@ - Energy\n"+
+                                "# - Wall\n"+
+                                ". - Ball\n"+
+                                "/ - Shield\n"+
+                                "Lines length must be same\n\n");
+            for (int i = 0; i < lines; ++i)
+                mapStr[i] = Console.ReadLine();
+            Console.Clear();
+            return mapStr;
         }
         private void Run()
         {
             bool isExit = false;
+            map.draw();
             // запуск нового потока, для получения нажатых клавишь
             Thread input = new Thread(() =>
             {
@@ -78,7 +130,24 @@ namespace OOP_Concepts.BallGame
                 }
             });
             input.Start();// его запуск
-            while (map.isGameOn() && !isExit)
+
+            Thread timeThread = new Thread(() =>
+            {
+                int time = 0;
+                int drawLine = Console.CursorTop+1;
+                while (map.isGameOn() && !isExit)
+                {
+                    int cursorLine = Console.CursorTop;
+                    Console.SetCursorPosition(0, drawLine);
+                    Console.Write( time/60 +":"+ (time % 60 < 10 ? "0" : "") + time %60);
+                    time++;
+                    Console.SetCursorPosition(0, cursorLine);
+                    Thread.Sleep(1000);
+                }
+            });
+            timeThread.Start();
+
+            while (map.isGameOn() && !isExit && map.isAlive())
             {
                 //Console.Clear(); // все стираем
                 map.draw();// Выводим нашу карту
@@ -89,6 +158,11 @@ namespace OOP_Concepts.BallGame
             if (!map.isGameOn()) // если победили
             {
                 Console.WriteLine("\nYou win!\n Press any key to continue.");
+                Console.ReadKey();
+            }
+            if (!map.isAlive())
+            {
+                Console.WriteLine("\nYou loose!\n Press any key to continue.");
                 Console.ReadKey();
             }
         }

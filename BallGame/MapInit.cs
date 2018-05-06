@@ -91,6 +91,9 @@ namespace OOP_Concepts.BallGame
                             map[i, j] = teleport;
                             teleport.set(j, i);
                             break;
+                        case '!':
+                            map[i, j] = new Trap(j, i);
+                            break;
                     }
                     mapPriv[i, j] = map[i, j].getSymbol();
                 }
