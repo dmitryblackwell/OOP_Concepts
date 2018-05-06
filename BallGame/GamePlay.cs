@@ -9,10 +9,10 @@ namespace OOP_Concepts.BallGame
         private String[] MapStr =
         {
             "##################",
-            "#                #",
+            "#     0          #",
             "#   @            #",
             "#            @ ###",
-            "#     /        . #",
+            "#     /  0     . #",
             "#  @           ###",
             "#       @        #",
             "##################"
@@ -24,7 +24,7 @@ namespace OOP_Concepts.BallGame
         {
 
 
-            map = new Map(); // инициализация карты
+            map = new Map(MapStr); // инициализация карты
             Run();
         }
         private void Run()
@@ -52,6 +52,15 @@ namespace OOP_Concepts.BallGame
                             map.moveUp();
                             break;
                         case ConsoleKey.S:
+                            if (cki.Modifiers == ConsoleModifiers.Control)
+                                map.save();
+                            else
+                                map.moveDown();
+                            break;
+                        case ConsoleKey.L:
+                            if (cki.Modifiers == ConsoleModifiers.Control)
+                                map.load();
+                            break;
                         case ConsoleKey.DownArrow:
                             map.moveDown();
                             break;

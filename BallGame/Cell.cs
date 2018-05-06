@@ -28,7 +28,7 @@ namespace OOP_Concepts.BallGame
             get { return y; }
             set { y = value; }
         }
-        public void draw() {
+        public virtual void draw() {
             if (privX != x || privY != y)
             {
                 Console.CursorVisible = false;
@@ -36,8 +36,8 @@ namespace OOP_Concepts.BallGame
                 Console.Write(symbol);
                 privX = x;
                 privY = y;
-                Console.ForegroundColor = ConsoleColor.White;
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
         public char getSymbol() { return symbol; }
     }
@@ -63,11 +63,10 @@ namespace OOP_Concepts.BallGame
             X += vX;
             Y += vY;
         }
-        public void draw()
+        public override void draw()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Red;
             base.draw();
-            Console.ForegroundColor = ConsoleColor.White;
         }
     }
     class Shield : Cell
@@ -93,5 +92,42 @@ namespace OOP_Concepts.BallGame
         public static void plusTotalBall() { totalBalls++; }
         public static void plusBallsDown() { ballsDown++; }
         public static bool isDownLess() { return ballsDown < totalBalls; }
+        public override void draw()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            base.draw();
+        }
+    }
+    class Teleport : Cell
+    {
+        private int x1, y1;
+        public Teleport(int x, int y, int x_, int y_) : base(x, y, '0')
+        {
+            this.x1 = x_;
+            this.y1 = y_;
+        }
+        public Teleport() : base(-1, -1, '0') { }
+
+        public void set(int x_,int y_)
+        {
+            if (X == -1 && Y == -1) { X = x_; Y = y_; }
+            else { x1 = x_; y1 = y_; }
+        }
+        public bool isSet() { return X != -1 && Y != -1; }
+        public Point getSecond(int x_, int y_)
+        {
+            return new Point(
+                x_ == x1 ? X : x1,
+                y_ == y1 ? Y : y1);
+        }
+        public override void draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.SetCursorPosition(x1, y1);
+            Console.Write("*");
+            base.draw();
+            privX = -1;
+            privY = -1;
+        }
     }
 }
