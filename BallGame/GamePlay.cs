@@ -10,12 +10,12 @@ namespace OOP_Concepts.BallGame
              {
                 new String[]
                 {   "##################",
-                    "#     0  ?       #",
+                    "#     0    ~     #",
                     "#   @       !    #",
-                    "#    >       @ ###",
-                    "#     /  0     . #",
-                    "#  @           ###",
-                    "#       @   |    #",
+                    "#    |       @ ###",
+                    "#     /    ^:  . #",
+                    "#  @0          ###",
+                    "#       @   ?    #",
                     "##################"    },
                 new String[]
                 {   "##################",
@@ -136,9 +136,9 @@ namespace OOP_Concepts.BallGame
             });
             input.Start();// его запуск
 
+            int time = 0;
             Thread timeThread = new Thread(() =>
             {
-                int time = 0;
                 Thread.Sleep(100);
                 int drawLine = Console.CursorTop+1;
                 while (map.isGameOn() && !isExit && map.isAlive())
@@ -149,6 +149,8 @@ namespace OOP_Concepts.BallGame
                     time++;
                     Console.SetCursorPosition(0, cursorLine);
                     Thread.Sleep(1000);
+                    if (time % 10 == 0)
+                        map.setShieldNotAlloweded();
                 }
             });
             timeThread.Start();
@@ -163,7 +165,8 @@ namespace OOP_Concepts.BallGame
             }
             if (!map.isGameOn()) // если победили
             {
-                Console.WriteLine("\nYou win!\n Press any key to continue.");
+                int score = (60 / time) + map.getShieldsOnMap();
+                Console.WriteLine("\nYou win!\n Your score:" + score + " Press any key to continue.");
                 Console.ReadKey();
             }
             if (!map.isAlive())

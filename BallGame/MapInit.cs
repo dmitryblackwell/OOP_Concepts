@@ -113,6 +113,7 @@ namespace OOP_Concepts.BallGame
                             map[i, j] = new Energy(j, i);
                             Energy.plusTotalBall();
                             break;
+                        default:
                         case '#':
                             map[i, j] = new Wall(j, i);
                             break;
@@ -140,6 +141,12 @@ namespace OOP_Concepts.BallGame
                             break;
                         case '?':
                             map[i, j] = new RandomDirection(j, i);
+                            break;
+                        case '~':
+                            map[i, j] = new DestoyAble(j, i);
+                            break;
+                        case ':':
+                            map[i, j] = new ShieldNotAllowed(j, i);
                             break;
                     }
                     mapPriv[i, j] = map[i, j].getSymbol();

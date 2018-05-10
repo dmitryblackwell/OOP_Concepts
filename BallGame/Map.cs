@@ -16,6 +16,7 @@ namespace OOP_Concepts.BallGame
         private Shield shield; // кординаты щита
         private Ball ball; // кординаты мяча
         private Teleport teleport = new Teleport();
+        private Random R = new Random();
         private bool settlementShield = false; // нужно ли устанавливать щит
         private bool alive = true;
         private char[,] mapPriv;
@@ -63,7 +64,17 @@ namespace OOP_Concepts.BallGame
                 settlementShield = false;
             }
         }
-
+        public void setShieldNotAlloweded()
+        {
+            Point p = new Point();
+            do
+            {
+                p = new Point(
+                 R.Next(map.GetLength(1) - 3) + 2,
+                 R.Next(map.GetLength(0) - 3) + 2);
+            } while ((p.X == ball.X && p.Y == ball.Y) || (p.X == shield.X && p.Y == shield.Y));
+            map[p.Y, p.X] = new ShieldNotAllowed(p.X, p.Y);
+        }
         // движение мячика
         public void BallStep()
         {
@@ -75,11 +86,11 @@ namespace OOP_Concepts.BallGame
                     Energy.plusBallsDown();
                     moveBall();
                 }
-                if (nextCell.GetType() == typeof(Empty))
+                if (nextCell.GetType() == typeof(Empty) || nextCell.GetType() == typeof(DestoyAble))
                 {
                     moveBall();
                 }
-                if (nextCell.GetType() == typeof(Wall))
+                if (nextCell.GetType() == typeof(Wall) || nextCell.GetType() == typeof(ShieldNotAllowed))
                 {
                     ball.vY *= -1;
                     ball.vX *= -1;
@@ -163,6 +174,16 @@ namespace OOP_Concepts.BallGame
         {
             map[shield.Y, shield.X] = new Shield(shield.X, shield.Y, shield.getShieldChar());
             settlementShield = true;
+        }
+
+        public int getShieldsOnMap()
+        {
+            int shieldsCount = 0;
+            for (int i = 0; i < map.GetLength(0); ++i)
+                for (int j = 0; j < map.GetLength(1); ++j)
+                    if (map[i, j].GetType() == typeof(Shield))
+                        shieldsCount++;
+            return shieldsCount;
         }
     }
 }

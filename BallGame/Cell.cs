@@ -167,12 +167,20 @@ namespace OOP_Concepts.BallGame
     }
     class RandomDirection : Cell
     {
-        public RandomDirection(int x, int y) : base(x,y,'?') { }
+        private Random R;
+        public RandomDirection(int x, int y) : base(x,y, '?') { R = new Random(); }
         public Point getRandomDirectionPoint()
         {
-            Random R = new Random();
             Direction dir = new Direction(X, Y, R.Next(4));
             return new Point(dir.vX, dir.vY);
         }
+    }
+    class DestoyAble : Cell
+    {
+        public DestoyAble(int x, int y) : base(x, y, '~') { }
+    }
+    class ShieldNotAllowed : Cell
+    {
+        public ShieldNotAllowed(int x, int y) : base(x,y,':') { }
     }
 }
