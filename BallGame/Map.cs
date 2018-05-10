@@ -109,6 +109,21 @@ namespace OOP_Concepts.BallGame
                     ball.vY = 0;
                     alive = false;
                 }
+                if(nextCell.GetType() == typeof(Direction))
+                {
+                    swapVelocity();
+                    ball.vX = ((Direction)nextCell).vX;
+                    ball.vY = ((Direction)nextCell).vY;
+                    ball.moveInside();
+                }
+                if(nextCell.GetType() == typeof(RandomDirection))
+                {
+                    swapVelocity();
+                    Point rp = ((RandomDirection)nextCell).getRandomDirectionPoint();
+                    ball.vX = rp.X;
+                    ball.vY = rp.Y;
+                    ball.moveInside();
+                }
             }
             catch (IndexOutOfRangeException e) { }
                 //case '\\':
@@ -166,3 +181,5 @@ namespace OOP_Concepts.BallGame
 // Envoi - Ghost
 // Loser - The First Time
 // Onlap - Whispers In My Head
+// MaNga - We Could Be The Same
+// Battle Beast - King for a Day

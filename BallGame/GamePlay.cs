@@ -10,12 +10,12 @@ namespace OOP_Concepts.BallGame
              {
                 new String[]
                 {   "##################",
-                    "#     0          #",
+                    "#     0  ?       #",
                     "#   @       !    #",
-                    "#            @ ###",
+                    "#    >       @ ###",
                     "#     /  0     . #",
                     "#  @           ###",
-                    "#       @        #",
+                    "#       @   |    #",
                     "##################"    },
                 new String[]
                 {   "##################",
@@ -37,7 +37,7 @@ namespace OOP_Concepts.BallGame
                     "##################"    }
            };
         //public static void Main(String[] args) { new GamePlay(); }
-        private const int UPDATE_TIME = 500; // время задержки между обновлениями
+        private int UpdateTime = 500; // время задержки между обновлениями
         private Map map; // наша карта
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
@@ -58,6 +58,10 @@ namespace OOP_Concepts.BallGame
                     break;
                 case "--editor":
                     map = new Map(readMap());
+                    break;
+                case "--time":
+                    map = new Map(maps[0]);
+                    UpdateTime = 1000/Convert.ToInt32(line.Split(new char[0])[1]);
                     break;
             }
           
@@ -155,7 +159,7 @@ namespace OOP_Concepts.BallGame
                 map.draw();// Выводим нашу карту
 
                 map.BallStep(); // двигаем мячик
-                Thread.Sleep(UPDATE_TIME); // ждем
+                Thread.Sleep(UpdateTime); // ждем
             }
             if (!map.isGameOn()) // если победили
             {

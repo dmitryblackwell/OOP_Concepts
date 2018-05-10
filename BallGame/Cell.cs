@@ -135,4 +135,44 @@ namespace OOP_Concepts.BallGame
     {
         public Trap(int x, int y) : base(x,y,'!') { }
     }
+    class Direction : Cell {
+        private int vx, vy;
+        public Direction(int x, int y, int directionTo) : base(x, y,
+            Convert.ToChar(
+            directionTo == 0 ? '>' : directionTo == 1 ? '^' :
+            directionTo == 2 ? '<' : '|')) {
+            switch (directionTo)
+            {
+                case 0: //right
+                    vx = 1;
+                    vy = 0;
+                    break;
+                case 1: // up
+                    vx = 0;
+                    vy = -1;
+                    break;
+                case 2: // left
+                    vx = -1;
+                    vy = 0;
+                    break;
+                case 3:
+                    vx = 0;
+                    vy = 1;
+                    break;   
+            }
+        }
+
+        public int vY { get { return vy; } set { vy = value; } }
+        public int vX { get { return vx; } set { vx = value; } }
+    }
+    class RandomDirection : Cell
+    {
+        public RandomDirection(int x, int y) : base(x,y,'?') { }
+        public Point getRandomDirectionPoint()
+        {
+            Random R = new Random();
+            Direction dir = new Direction(X, Y, R.Next(4));
+            return new Point(dir.vX, dir.vY);
+        }
+    }
 }
