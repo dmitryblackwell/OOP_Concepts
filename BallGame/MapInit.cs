@@ -65,8 +65,12 @@ namespace OOP_Concepts.BallGame
                     if (map[i, j].GetType() == typeof(Shield))
                         isThereShield = true;
                 }
-            return isThereShield && isThereEnergy && isThereBall;
-                
+            bool isSurounded = true;
+            for (int i = -1; i <= 1; ++i)
+                for (int j = -1; j <= 1; ++j)
+                    if (map[ball.Y + i, ball.X + j].GetType() == typeof(Empty))
+                        isSurounded = false;
+            return isThereShield && isThereEnergy && isThereBall && !isSurounded;
         }
         private Point getRandomPoint(Random R)
         {
