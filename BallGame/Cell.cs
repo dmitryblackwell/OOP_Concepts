@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace OOP_Concepts.BallGame
 {
     abstract class Cell
     {
         protected char symbol;
+        protected PictureBox texture = new PictureBox();
         private int x, y;
         protected int privX, privY;
+        private const int SHIFT = 30;
         public Cell(int x, int y, char symbol)
         {
             this.x = x;
@@ -17,16 +20,20 @@ namespace OOP_Concepts.BallGame
             privX = 0;
             privY = 0;
             this.symbol = symbol;
+            texture.Top = y * SHIFT;
+            texture.Left = x * SHIFT;
         }
+
+        public PictureBox getTexture() { return texture; }
         public int X
         {
             get { return x; }
-            set { x = value; }
+            set { x = value; texture.Left = x * SHIFT; }
         }
         public int Y
         {
             get { return y; }
-            set { y = value; }
+            set { y = value; texture.Top = y * SHIFT; }
         }
         public virtual void draw() {
             if (privX != x || privY != y)

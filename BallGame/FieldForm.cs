@@ -43,9 +43,8 @@ namespace OOP_Concepts.BallGame
             BackColor = Color.FromArgb(34,112,129);
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(Run);
-            timer.Interval = 100;
+            timer.Interval = 400;
             timer.Start();
-
         }
 
         private void Run(object sender, EventArgs e)

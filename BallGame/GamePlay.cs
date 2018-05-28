@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+
 
 namespace OOP_Concepts.BallGame
 {
     class GamePlay
     {
+        
         // карта в виде массива строк
         private String[][] maps = new String[][]
              {
@@ -45,8 +51,8 @@ namespace OOP_Concepts.BallGame
         private Map map; // наша карта
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
-        {
-
+        {   
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FieldForm());
