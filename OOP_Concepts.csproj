@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BallGame\Cell.cs" />
+    <Compile Include="BallGame\FieldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BallGame\FieldForm.Designer.cs">
+      <DependentUpon>FieldForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BallGame\MapFile.cs" />
     <Compile Include="BallGame\GamePlay.cs" />
     <Compile Include="BallGame\Map.cs" />
@@ -85,6 +91,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BallGame\FieldForm.resx">
+      <DependentUpon>FieldForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MinedOut\GraphicalUI.resx">
       <DependentUpon>GraphicalUI.cs</DependentUpon>
     </EmbeddedResource>

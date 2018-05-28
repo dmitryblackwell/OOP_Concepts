@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OOP_Concepts.BallGame
 {
@@ -42,7 +46,13 @@ namespace OOP_Concepts.BallGame
         //static void Main(string[] args) { new GamePlay(); } // создание этого класса
         public GamePlay()
         {
-            Console.WriteLine("Enter your choice: ");
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FieldForm());
+            map = new Map(maps[0]);
+
+            /*Console.WriteLine("Enter your choice: ");
             String line = Console.ReadLine();
             switch (line.Split(new char[0])[0]) {
                 default:
@@ -63,9 +73,9 @@ namespace OOP_Concepts.BallGame
                     map = new Map(maps[0]);
                     UpdateTime = 1000/Convert.ToInt32(line.Split(new char[0])[1]);
                     break;
-            }
+            }*/
           
-            Run();
+            //Run();
         }
         private String[] readMap()
         {

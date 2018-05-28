@@ -21,7 +21,7 @@ namespace OOP_Concepts.BallGame
         private bool alive = true;
         private char[,] mapPriv;
         private const int randWidth = 20;
-        private const int randHeight = 7;
+        private const int randHeight = 15;
         
 
         public void draw() // рисум карту
@@ -33,6 +33,11 @@ namespace OOP_Concepts.BallGame
                 
             Console.SetCursorPosition(0, CursotTop);
         }
+
+
+        public int getHeight() { return map == null ? 0 : map.GetLength(0); }
+        public int getWidth() { return map == null ? 0 : map.GetLength(1); }
+        public char getCellChar(int i,int j) { return map[i, j].getSymbol(); }
 
         public bool isGameOn() // проверка собрали мы мячи или нет
         {
@@ -204,3 +209,4 @@ namespace OOP_Concepts.BallGame
 // Onlap - Whispers In My Head
 // MaNga - We Could Be The Same
 // Battle Beast - King for a Day
+// Miracle Of Sound - Take it Back
