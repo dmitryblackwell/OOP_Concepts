@@ -13,6 +13,7 @@ namespace OOP_Concepts.BallGame
         private int x, y;
         protected int privX, privY;
         private const int SHIFT = 30;
+    
         public Cell(int x, int y, char symbol)
         {
             this.x = x;

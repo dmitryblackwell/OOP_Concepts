@@ -6,7 +6,6 @@ D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.exe
 D:\Projects\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\OOP_Concepts.exe
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\bin\Debug\OOP_Concepts.pdb
-C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csproj.CoreCompileInputs.cache
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.exe
 C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb
@@ -32,3 +31,5 @@ C:\Users\Dmitry\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.exe
 C:\Users\Dmitry\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.pdb
 C:\Users\Dmitry\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csprojAssemblyReference.cache
 C:\Users\Dmitry\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.BallGame.FieldForm.resources
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.csprojAssemblyReference.cache
+C:\Users\Dima\Documents\GitHub\OOP_Concepts\obj\Debug\OOP_Concepts.BallGame.FieldForm.resources

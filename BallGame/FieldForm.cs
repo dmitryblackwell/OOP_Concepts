@@ -22,7 +22,7 @@ namespace OOP_Concepts.BallGame
         public FieldForm()
         {
             InitializeComponent();
-            
+
             map = new Map();
             field = new PictureBox[map.getHeight()][];
             for (int i = 0; i < map.getHeight(); ++i)
@@ -33,20 +33,33 @@ namespace OOP_Concepts.BallGame
                     field[i][j] = new PictureBox();
                     field[i][j].Top = i * SHIFT;
                     field[i][j].Left = j * SHIFT;
+
+                    switch (map.getCellChar(i, j))
+                    {
+                        case '#': field[i][j].ImageLocation = WALL_IMG; break;
+                        default:
+                        case ' ': field[i][j].ImageLocation = null; break;
+                        case '.': field[i][j].ImageLocation = BALL_IMG; break;
+                        case '/': field[i][j].ImageLocation = SHIELD_IMG; break;
+                        case '@': field[i][j].ImageLocation = ENERGY_IMG; break;
+                    }
+
                     field[i][j].Font = new Font("Arial", 16);
                     field[i][j].Width = SHIFT;
                     field[i][j].Height = SHIFT;
                     Controls.Add(field[i][j]);
                 }
             }
-            
-            BackColor = Color.FromArgb(34,112,129);
+
+            BackColor = Color.FromArgb(34, 112, 129);
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(Run);
             timer.Interval = 400;
             timer.Start();
+
         }
 
+      
         private void Run(object sender, EventArgs e)
         {
             map.BallStep();
@@ -67,7 +80,21 @@ namespace OOP_Concepts.BallGame
             
         }
 
+        private void MainForm_Press(object sender, KeyPressEventArgs e)
+        {
 
+            if (e.KeyChar == 'A' || e.KeyChar == 'a')
+                map.moveLeft();
 
+            if (e.KeyChar == 'D' || e.KeyChar == 'd')
+                map.moveRight();
+
+            if (e.KeyChar == 'W' || e.KeyChar == 'w')
+                map.moveUp();
+
+            if (e.KeyChar == 'S' || e.KeyChar == 's')
+                map.moveDown();
+            
+        }
     }
 }

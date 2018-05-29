@@ -151,8 +151,6 @@ namespace OOP_Concepts.MinedOut
             MessageBox.Show(oneRate);
         }
 
-        
-
         private void GraphicalUI_Load(object sender, EventArgs e)
         {
             // window is load

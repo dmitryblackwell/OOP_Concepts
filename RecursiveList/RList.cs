@@ -65,6 +65,8 @@ namespace OOP_Concepts.RecursiveList
                 Console.WriteLine("Element no found");
             }
         }
+
+
         public int Length
         {
             get { return length; }
@@ -92,6 +94,8 @@ namespace OOP_Concepts.RecursiveList
 
             }
         }
+
+
         private void cut(Node n,int newLength, int count)
         {
             if (count == newLength-1)
@@ -99,6 +103,8 @@ namespace OOP_Concepts.RecursiveList
             else if (n.next != null)
                 cut(n.next, newLength, ++count);
         }
+
+
         public int this[int key]                   // indexator         //here
         {
             get
